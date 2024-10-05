@@ -5,10 +5,10 @@ import os
 import uuid
 
 # Database configuration
-DB_USERNAME = os.environ.get('DB_USERNAME')
-DB_PASSWORD = os.environ.get('DB_PASSWORD')
-DB_HOSTNAME = os.environ.get('DB_HOSTNAME', 'localhost')
-DB_NAME = os.environ.get('DB_NAME', 'careersoncloud')
+DB_USERNAME = os.environ.get('DB_USERNAME', 'b6vogh5tk02ochmo')
+DB_PASSWORD = os.environ.get('DB_PASSWORD', 'nzoswf06qzmrd69k')
+DB_HOSTNAME = os.environ.get('DB_HOSTNAME', 's54ham9zz83czkff.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306')
+DB_NAME = os.environ.get('DB_NAME', 'rv9sl1sg4i8v3n2z')
 
 engine_url = f'mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOSTNAME}/{DB_NAME}?charset=utf8mb4'
 engine = create_engine(engine_url)
