@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Art Root Academy</title>
+    {% include 'bootstrap.html' %}
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    <!-- About Section -->
+    <div id="aboutus" class="container mb-6">
+      <div class="row" style='border: 32px'>
+        <div class="d-block d-md-block mb-4 col-md-6">
+             <img src="/static/images/banner2.jpg" style="height: 350px; height: auto; width: 100%; border-radius: 15px; object-fit: cover;" >
+          </div>
+        <div class="container col-md-6">
+            <h2 class="mb-4">Why Choose Art Root Academy?</h2>
+            <p class="mb-4">
+                At Art Root Academy, we believe in nurturing creativity from the ground up. Whether you're just starting your artistic journey or looking to refine your skills, our academy offers a space to explore, learn, and grow.
+                With a focus on painting, drawing, and calligraphy, we offer tailored courses designed to help students of all levels discover their inner artist.
+            </p>
+            <p>
+                Our mission is to provide an inspiring and supportive environment where creativity can flourish. Through expert guidance, hands-on practice, and a passion for the arts, we cultivate a community of artists rooted in their unique expression.
+            </p>
+        </div>
+      </div>
+    </div>
+
+    {% include 'courses.html' %}
+    {% include 'staff.html' %}
+
+
+    {% include 'footer.html' %}
+    {% include 'js.html' %}
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!-- Upper Section: Logo and Contact Info -->
+<section class="info-section background-section">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap">
+        <!-- Logo -->
+        <div class="d-flex flex-column align-items-center">
+          <a class="navbar-brand" href="/">
+              <img src="/static/images/navlogo.png" alt="Art Root Academy">
+          </a>
+      </div>
+
+        <!-- Contact Info -->
+        <div class="d-flex align-items-center justify-content-around contact-info py-3">
+            <div class="contact-item">
+                <p class="mb-1 fw-bold">Contact via Phone</p>
+                <span class="phone">
+                    <i class="fa-solid fa-phone me-2"></i> +92 320-7074209
+                </span>
+            </div>
+            <div class="contact-item">
+                <p class="mb-1 fw-bold">Contact via Email</p>
+                <a href="mailto:amandfati222@gmail.com?subject=Information%20About%20the%20Course(s)" class="email">
+                    <i class="fa-solid fa-envelope me-2"></i> art-root-academy@gmail.com
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="et-hero-tabs">
+    <div class="et-hero-tabs-container">
+      <a class="et-hero-tab" href="/">Home</a>
+      <a class="et-hero-tab dropdown-toggle" href="/#courses" id="coursesDropdown" role="button" aria-expanded="false"  onclick="toggleDropdown(event)">
+          Courses
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+          <li><a class="dropdown-item" href="#designing">Designing Courses</a></li>
+          <li><a class="dropdown-item" href="#art">Art and Calligraphy Courses</a></li>
+          <li><a class="dropdown-item" href="#development">Development Courses</a></li>
+      </ul>
+
+      <a class="et-hero-tab" target="_blank" href="{{ url_for('register') }}#registration">Registration</a>
+      <a class="et-hero-tab" href="/#aboutus">About us</a>
+      <a class="et-hero-tab" target="_blank" href="{{ url_for('contact') }}#contact">Contact us</a>
+      <span class="et-hero-tab-slider"></span>
+    </div>
+  </section>
+
+<!-- Banner Container -->
+<div class="banner-container">
+    <div class="greeting">
+        <h1 class="banner-text">Welcome to Art Root Academy!</h1>
+        <p>Discover your artistic potential.</p>
+      </div>
+</div>
+
+<style>
+/* Navbar */
+.navbar {
+    background-color: #2E7D32; /* Green Forest */
+    padding: 15px 0;
+    border-top: 3px solid #E57373; /* Rich Terracotta */
+}
+
+.navbar-nav .nav-link {
+    color: #F5F5DC; /* Warm Beige */
+    font-size: 1.0rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    font-family: 'Rubik', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #FBC02D; /* Mustard Yellow */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.brand-text {
+    color: #2E7D32; /* Green Forest */
+    font-size: 3rem; /* Reduced font size */
+    font-weight: bold;
+    margin-left: 15px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.brand-text {
+    font-size: 4rem; /* Adjust size as needed */
+    text-align: center; /* Center the text */
+}
+
+
+.navbar-brand img {
+    height: 400px; /* Adjust the logo height */
+    width: auto;
+}
+
+.info-section {
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 60px; /* Smaller logo on mobile */
+    }
+
+    .brand-text {
+        font-size: 1.8rem; /* Smaller text for mobile */
+    }
+
+    .info-section {
+        text-align: center;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .contact-item {
+        margin-bottom: 10px;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .navbar {
+        padding: 10px;
+    }
+
+    .banner-text {
+        font-size: 1.5rem;
+    }
+
+    .btn-course {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .navbar-brand img {
+        height: 70px;
+    }
+
+    .brand-text {
+        font-size: 2.0rem;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 0.95rem;
+    }
+
+    .btn-course {
+        font-size: 1.1rem;
+    }
+}
+
+/* Hover Animation */
+.menu-item::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #FBC02D;
+    transition: width 0.3s ease;
+}
+
+.menu-item:hover::after {
+    width: 100%;
+}
+
+/* Contact Info */
+.contact-info {
+    background-color: #f5f5dc;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+.contact-item {
+    text-align: center;
+}
+
+.phone, .email {
+    font-size: 1.1rem;
+    color: #2e7d32;
+}
+
+.email:hover {
+    color: #e57373;
+}
+
+i {
+    color: #fbc02d;
+}
+
+.contact-item p {
+    color: #E57373;
+}
+
+.background-section {
+    position: relative;
+    background-image: url('https://cdn.pixabay.com/photo/2019/10/30/14/51/autumn-4589724_1280.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 180px; /* Adjust height as per your need */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+}
+
+/* Add an overlay for the opacity effect */
+
+.background-section::before {
+    content: "ART ROOT ACADEMY";
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust position to center */
+    width: auto; /* Adjust width */
+    height: auto; /* Adjust height */
+    z-index: 1; /* Ensures the overlay is behind the content */
+    font-size: 3.8rem; /* Font size */
+    color: #FBC02D; /* Text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds shadow for better visibility */
+    letter-spacing: 2px; /* Spacing between letters */
+}
+
+/* Responsive Font Sizes */
+@media (max-width: 1200px) {
+    .background-section::before {
+        font-size: 2.5rem; /* Font size for medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .background-section::before {
+        font-size: 2rem; /* Font size for small screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .background-section::before {
+        font-size: 1.5rem; /* Font size for extra small screens */
+        letter-spacing: 1px; /* Less spacing for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .background-section::before {
+        font-size: 1.2rem; /* Font size for very small screens */
+    }
+}
+
+/* Ensure content stays on top of the background and overlay */
+.background-section * {
+    position: relative;
+    z-index: 2; /* Keeps the content above the overlay */
+}
+
+.content h1 {
+    font-size: 2.5rem; /* Adjust as per your design */
+    font-weight: bold;
+}
+
+.content p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.btn-course {
+    margin-top: 20px;
+    background-color: #FBC02D; /* Mustard Yellow */
+    color: #2E7D32; /* Green Forest */
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-course:hover {
+    background-color: #E57373; /* Terracotta */
+}
+
+/////another/////
+body {
+    font-family: "Century Gothic", 'Lato', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.et-hero-tabs,
+.et-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    position: relative;
+    background: #eee;
+    text-align: center;
+    padding: 0 2em;
+
+    h1 {
+        font-size: 2rem;
+        margin: 0;
+        letter-spacing: 1rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+        letter-spacing: 0.3rem;
+        opacity: 0.6;
+    }
+}
+
+.et-hero-tabs-container {
+    border-top: 5px solid #FBC02D;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background: #F5F5DC;
+    z-index: 10;
+
+    &--top {
+        position: fixed;
+        top: 0;
+    }
+}
+
+.et-hero-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    color: #000;
+    letter-spacing: 0.1rem;
+    transition: all 0.5s ease;
+    font-size: 0.8rem;
+
+    &:hover {
+        color: white;
+        background: #FBC02D; /* Mustard Yellow */
+        transition: all 0.5s ease;
+    }
+}
+
+.et-hero-tab-slider {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 6px;
+    background: #66B1F1;
+    transition: left 0.3s ease;
+}
+
+
+@media (min-width: 800px) {
+  .et-hero-tabs,
+  .et-slide {
+    h1 {
+        font-size: 3rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
+  }
+  .et-hero-tab {
+    font-size: 1rem;
+  }
+}
+
+.dropdown-menu {
+    display: none; /* Initially hide the dropdown */
+    position: absolute; /* Position it absolutely to the parent */
+    background: white; /* Background color for the dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    border-radius: 4px; /* Rounded corners */
+    z-index: 1000; /* Ensure it appears above other elements */
+    opacity: 0; /* Make it transparent initially */
+    transform: translateY(-10px); /* Slide up initially */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for opacity and position */
+}
+
+.dropdown-menu.show {
+    border-left: 5px solid #FBC02D;
+    display: block; /* Display the dropdown when active */
+    opacity: 1; /* Fully opaque */
+    transform: translateY(0); /* Move to original position */
+}
+
+.dropdown-toggle {
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.dropdown {
+    position: relative; /* Ensure dropdown is positioned relative to the parent */
+}
+
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    width: 250px; /* Increased width for a larger box */
+    font-size: 2.0rem; /* Increased font size for better visibility */
+    position: absolute; /* Position it relative to the dropdown parent */
+    top: 100%; /* Position it below the dropdown link */
+    left: 25%; /* Align to the left of the parent */
+    z-index: 1000; /* Ensure it appears above other elements */
+    background: white; /* Set a background color for visibility */
+    border: 1px solid #ccc; /* Optional: add border for better definition */
+    border-radius: 4px; /* Optional: rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+    padding: 10px 0; /* Optional: add padding for better spacing */
+}
+
+.dropdown-item {
+    padding: 10px 15px; /* Add padding to dropdown items for better click area */
+}
+
+.dropdown-item:hover {
+    background: #FBC02D; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+}
+
+.dropdown-menu.show {
+    display: block; /* Show when 'show' class is added */
+}
+
+
+
+</style>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const dropdownToggle = document.querySelector('#coursesDropdown');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        // Show dropdown menu on mouse enter
+        dropdownToggle.addEventListener('mouseenter', function () {
+            dropdownMenu.classList.add('show'); // Show dropdown
+        });
+
+        // Hide dropdown menu on mouse leave
+        dropdownToggle.addEventListener('mouseleave', function () {
+            dropdownMenu.classList.remove('show'); // Hide dropdown
+        });
+
+        // Keep dropdown open when hovering over the dropdown menu
+        dropdownMenu.addEventListener('mouseenter', function () {
+            dropdownMenu.classList.add('show'); // Keep dropdown open
+        });
+
+        // Hide dropdown when mouse leaves the dropdown menu
+        dropdownMenu.addEventListener('mouseleave', function () {
+            dropdownMenu.classList.remove('show'); // Hide dropdown
+        });
+    });
+
+</script>

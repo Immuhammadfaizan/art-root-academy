@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Graphic Design - Beginner & Advanced - Art Roots Academy</title>
+    {% include 'bootstrap.html' %}
+    <style>
+        .course-container {
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .course-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2E7D32;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .course-card img {
+            height: 300px;
+            width: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 20px;
+            color: #E57373;
+        }
+        .enroll-btn {
+            background-color: #FBC02D;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .enroll-btn:hover {
+            background-color: #D9A527;
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    <div id='graphic_design' class="container course-container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="course-card">
+                    <img src="/static/images/graphic.jpg" alt="Graphic Design">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 id="designing" class="course-title">Graphic Design - Beginner & Advanced</h2>
+                <p><strong>Registration Fee:</strong> 2000</p>
+                <p><strong>Course Fee:</strong> 12000</p>
+                <p><strong>Course Duration:</strong> 12 Weeks</p>
+                <p><strong>Course Description:</strong> This course covers both beginner and advanced graphic design techniques, including software tools, branding, web design, and more.</p>
+                <a href="#registration" class="btn enroll-btn">Enroll Now</a>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h3 class="section-title">Beginner Level Schedule</h3>
+                <ul>
+                    <li>Week 1: Introduction to Graphic Design</li>
+                    <li>Week 2: Introduction to Design Software</li>
+                    <li>Week 3: Applying Basic Design Concepts</li>
+                    <li>Week 4: Branding & Identity Design</li>
+                    <li>Week 5: Digital Design and Web Graphics</li>
+                    <li>Week 6: Final Project & Portfolio Creation</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3 class="section-title">Advanced Level Schedule</h3>
+                <ul>
+                    <li>Week 1: Advanced Design Principles</li>
+                    <li>Week 2: Advanced Adobe Photoshop</li>
+                    <li>Week 3: Advanced Adobe Illustrator</li>
+                    <li>Week 4: UI/UX Design</li>
+                    <li>Week 5: Advanced Branding and Marketing Design</li>
+                    <li>Week 6: Portfolio Development & Final Project</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h3 class="section-title">Final Project</h3>
+                <p>During the last week, students will complete a comprehensive final project that brings together all the design concepts and techniques learned throughout the course. The final project will be a fully functional design portfolio ready to be presented to clients or used for professional purposes.</p>
+            </div>
+        </div>
+
+        <div id="registration" class="row mt-5 text-center">
+            <div class="col-md-12">
+                <a href="/registration" class="btn enroll-btn">Register</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="courses" class="container mt-5" style="background-color: #F5F5DC; padding: 20px; border-radius: 15px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+        <div class="row">
+          <h1 id="art" class="text-center mb-5" style="color: #2E7D32; font-size: 50px; font-family: 'Roboto', sans-serif; font-weight: bold; letter-spacing: 1px;">Courses</h1>
+          <div class="row mt-4">
+            <h2 class="text-center" style="color: #2E7D32; font-family: 'Roboto', sans-serif; font-weight: bold; letter-spacing: 1px;">ART & CALLIGRAPGY COURSES</h2>
+            <!-- 2: Drawing and Art -->
+            <div id='drawing' class="col-md-6 mb-4">
+                <div class="course-card" style="border-radius: 15px; overflow: hidden; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+                    <img src="/static/images/paint.jpg" alt="Drawing and Art" style="height: 200px; width: 100%; object-fit: cover;">
+                    <div class="p-3">
+                        <h2 class="course-title" style="font-family: 'Montserrat', sans-serif; color: #2E7D32; font-size: 20px; font-weight: bold;">Drawing and Art - Beginner</h2>
+                        <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                            <ul>
+                                <li>Beginner Level (6 Weeks)</li>
+                            </ul>
+                        </p>
+                        <a href="{{ url_for('drawing') }}#drawing" class="btn" style="background-color: #FBC02D; color: white; width: 100%; border-radius: 8px; padding: 10px; font-weight: bold;">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3: Arabic Calligraphy -->
+            <div id='calligarphy' class="col-md-6 mb-4">
+                <div class="course-card" style="border-radius: 15px; overflow: hidden; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+                    <img src="/static/images/calli.jpg" alt="Arabic Calligraphy" style="height: 200px; width: 100%; object-fit: cover;">
+                    <div class="p-3">
+                        <h2 class="course-title" style="font-family: 'Montserrat', sans-serif; color: #2E7D32; font-size: 20px; font-weight: bold;">Arabic Calligraphy - (8 Weeks)</h2>
+                        <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                            <ul>
+                                <li>8 Weeks</li>
+                            </ul>
+                        </p>
+                        <a href="{{ url_for('calligraphy') }}#calligraphy" class="btn" style="background-color: #FBC02D; color: white; width: 100%; border-radius: 8px; padding: 10px; font-weight: bold;">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="row mt-4">
+          <h2 id="development" class="text-center mb-5" style="color: #2E7D32; font-family: 'Roboto', sans-serif; font-weight: bold; letter-spacing: 1px;">DEVELOPMENT COURSES</h2>
+            <!-- 4: Oracle SQL & PL/SQL -->
+            <div id='oracle' class="col-md-6 mb-4">
+                <div class="course-card" style="border-radius: 15px; overflow: hidden; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+                    <img src="/static/images/oracle.jpg" alt="Oracle SQL & PL/SQL Programming" style="height: 200px; width: 100%; object-fit: cover;">
+                    <div class="p-3">
+                        <h2 class="course-title" style="font-family: 'Montserrat', sans-serif; color: #2E7D32; font-size: 20px; font-weight: bold;">Oracle SQL & PL/SQL Programming</h2>
+                        <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                            <ul>
+                              <li><strong>Hands-On Project (Week 12 or Ongoing)</strong></li>
+                              <ul>
+                                <li><p>Designing and implementing a small database system using Oracle SQL and PL/SQL.</p></li>
+                                <li><p>Applying all learned concepts: table creation, data manipulation, writing queries, procedures, and triggers.</p></li>
+                              </ul>
+                            </ul>
+                        </p>
+                        <a href="{{ url_for('oracle') }}#oracle" class="btn" style="background-color: #FBC02D; color: white; width: 100%; border-radius: 8px; padding: 10px; font-weight: bold;">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5: Oracle Application Development -->
+            <div id='advance_oracle' class="col-md-6 mb-4">
+                <div class="course-card" style="border-radius: 15px; overflow: hidden; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+                    <img src="/static/images/dev.jpg" alt="Oracle Application Development" style="height: 200px; width: 100%; object-fit: cover;">
+                    <div class="p-3">
+                        <h2 class="course-title" style="font-family: 'Montserrat', sans-serif; color: #2E7D32; font-size: 20px; font-weight: bold;">Oracle Application Development (Advance)</h2>
+                        <p style="color: #555; font-size: 14px; line-height: 1.6;">
+                            <ul>
+                                <li><strong>Final Project (Week 16)</strong></li>
+                                <ul>
+                                  <li><p>Design, develop, and deploy a full-featured Oracle APEX web application using the concepts learned in the course.</p></li>
+                                  <li><p>Apply best practices for data management, security, and user interaction.</p></li>
+                                </ul>
+                            </ul>
+                        </p>
+                        <a href="{{ url_for('advance_oracle') }}#advance_oracle" class="btn" style="background-color: #FBC02D; color: white; width: 100%; border-radius: 8px; padding: 10px; font-weight: bold;">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+    {% include 'js.html' %}
+</body>
+</html>

@@ -1,0 +1,85 @@
+<style media="screen">
+  :root {
+      --primary-color: #2E7D32; /* Deep Forest Green */
+      --secondary-color: #E57373; /* Rich Terracotta */
+      --accent-color: #FBC02D; /* Mustard Yellow */
+      --neutral-base: #F5F5DC; /* Warm Beige */
+      --text-color: #333;
+      --text-light-color: #FFF;
+  }
+
+  /* General Styling */
+  body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--neutral-base);
+      color: var(--text-color);
+  }
+
+  /* Course Cards */
+  .course {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+  }
+
+  .course:last-child {
+      border: none;
+  }
+
+  .course-title {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 10px 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.course-content {
+    display: none; /* Controlled via JS */
+    padding: 10px 20px;
+    background-color: var(--text-light-color);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 10px; /* Add space above the content */
+    transition: max-height 0.3s ease, padding 0.3s ease; /* Smooth transition */
+    max-width: 100%; /* Ensure it doesn't exceed the container width */
+    overflow: hidden; /* Hide overflow content */
+}
+
+  .register-btn, .btn-course {
+      border-radius: 4px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .register-btn {
+      background-color: #3aafa9;
+      color: #fff;
+      border: none;
+  }
+
+  .register-btn:hover {
+      background-color: #2b7a78;
+  }
+
+  .btn-course {
+      background-color: transparent;
+      color: var(--secondary-color);
+      border: 2px solid var(--secondary-color);
+  }
+
+  .btn-course:hover {
+      background-color: var(--secondary-color);
+      color: var(--text-light-color);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      .course { margin-bottom: 15px; }
+      .btn-course { width: 100%; text-align: center; }
+  }
+</style>

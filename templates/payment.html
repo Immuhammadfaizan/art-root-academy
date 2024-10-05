@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <link rel="stylesheet" href="style.css">
+  <style media="screen">
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Open Sans", sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh; /* Ensures full height */
+      width: 100%;
+      background-color: #2E7D32; /* Deep Forest Green as a fallback */
+      padding: 0 10px;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://cdn.pixabay.com/photo/2020/11/30/07/26/coins-5790121_1280.jpg") no-repeat center center;
+      background-size: cover;
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 12px; /* Slightly larger for a softer look */
+      padding: 30px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+      border: 2px solid rgba(255, 255, 255, 0.4); /* Softer border */
+      backdrop-filter: blur(12px); /* Increased blur for more depth */
+      color: #fff;
+      z-index: 1; /* Ensure it stays above the background */
+      animation: fadeInUp 0.8s ease-in-out;
+      margin: 50px auto; /* Centering */
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6); /* Enhanced shadow for depth */
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      font-size: 2.8rem; /* Slightly larger font for emphasis */
+      margin-bottom: 20px;
+      color: #FBC02D; /* Mustard Yellow */
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Enhanced text shadow for depth */
+    }
+
+    h4, h3 {
+      font-size: 1.5rem; /* Slightly larger font for emphasis */
+      margin-bottom: 20px;
+      color: #FBC02D; /* Mustard Yellow */
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Enhanced text shadow for depth */
+      text-align: left;
+    }
+
+    p {
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .input-field,
+    .input-file {
+      width: 100%;
+      padding: 12px; /* Increased padding for a more comfortable feel */
+      margin-top: 5px;
+      border: 2px solid #FBC02D; /* Mustard Yellow border */
+      border-radius: 8px; /* More rounded for charm */
+      transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    }
+
+    .input-field:focus,
+    .input-file:focus {
+      border-color: #E57373; /* Change to Rich Terracotta on focus */
+      box-shadow: 0 0 8px rgba(251, 192, 45, 0.7); /* Subtle glow effect */
+      outline: none; /* Remove default outline */
+    }
+
+    button {
+      background-color: #FBC02D; /* Mustard Yellow */
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 8px; /* More rounded */
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Adding transform for effect */
+    }
+
+    button:hover {
+      background-color: #E57373; /* Rich Terracotta */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Added shadow on hover for effect */
+      transform: translateY(-2px); /* Slight lift effect */
+    }
+
+    .payment-section {
+      display: none; /* Initially hide payment details */
+      margin: 15px 0;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  .back-button {
+    background-color: #FBC02D; /* Mustard Yellow */
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded edges */
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Adding transform for effect */
+    margin-top: 20px;
+  }
+
+  .back-button:hover {
+    background-color: #E57373; /* Rich Terracotta on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Added shadow on hover for effect */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+
+  /* Alert Message Styles */
+  .alert-dismissible {
+      background-color: rgba(255, 255, 255, 0.6); /* White background with transparency */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+      max-width: 600px; /* Limit the width of the alert */
+      margin-left: auto;
+      margin-right: auto; /* Center the alert box */
+      opacity: 0; /* Initial hidden state */
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Fade-in and slide-in */
+      transform: translateY(-20px); /* Slide from above */
+  }
+
+  .alert-dismissible.fade.show {
+      opacity: 1; /* Fully visible */
+      transform: translateY(0); /* No sliding */
+  }
+
+  .alert {
+      color: #2E7D32; /* Deep Forest Green text for success messages */
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      font-size: 1.0rem;
+      color: white;
+      font-weight: bold;
+  }
+
+  .alert-success {
+      background-color: rgba(46, 125, 50, 0.8); /* Light green for success background */
+  }
+
+  .alert-error {
+      background-color: rgba(229, 115, 115, 0.8); /* Light red for error background */
+  }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h2>Select Your Payment Method</h2>
+    <form action="{{ url_for('submit_payment')}}" method="POST" enctype="multipart/form-data" id="payment-form">
+
+      <!-- Flash message display -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              <div class="alert alert-dismissible fade show" role="alert">
+                  {% for category, message in messages %}
+                      <div class="alert alert-{{ category }}">{{ message }}</div>
+                  {% endfor %}
+              </div>
+          {% endif %}
+      {% endwith %}
+
+      <!-- User Details Section -->
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" class="input-field" name="name" id="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Your Email:</label>
+        <input type="email" class="input-field" name="email" id="email" required>
+      </div>
+
+      <!-- Payment Method Selection -->
+      <h3>Select Payment Method:</h3>
+      <div class="form-group">
+        <input type="radio" id="bank_transfer" name="payment_method" value="bank_transfer" required>
+        <label for="bank_transfer">Bank Transfer</label>
+      </div>
+      <div class="form-group">
+        <input type="radio" id="jazzcash" name="payment_method" value="jazzcash" required>
+        <label for="jazzcash">JazzCash</label>
+      </div>
+      <div class="form-group">
+        <input type="radio" id="credit_card" name="payment_method" value="credit_card" required>
+        <label for="credit_card">Debit/Credit Card</label>
+      </div>
+
+      <!-- Bank Transfer Details -->
+      <div id="bank_transfer_details" class="payment-section">
+        <h4 class="mb-3">Bank Transfer Details</h4>
+        <p><strong>FATIMA TUL ZUHRA</strong></p>
+        <p>Meezan Bank - Meezan Digital Center</p>
+        <p>Account Number: <strong>00300109929933</strong></p>
+        <p>IBAN: <strong>PK80MEZN0000300109929933</strong></p>
+        <label for="bank_receipt">Upload Bank Transfer Receipt:</label>
+        <input type="file" class="input-file" name="bank_receipt" id="bank_receipt" accept="image/*">
+      </div>
+
+      <!-- JazzCash Details -->
+      <div id="jazzcash_details" class="payment-section">
+        <h4>JazzCash Details</h4>
+        <p>Send to: <strong>03004188817</strong></p>
+        <p>Name: <strong>Muhammad Ahmed</strong></p>
+        <label for="jazzcash_receipt">Upload JazzCash Receipt:</label>
+        <input type="file" class="input-file" name="jazzcash_receipt" id="jazzcash_receipt" accept="image/*">
+      </div>
+
+      <!-- Credit Card Details -->
+      <div id="credit_card_details" class="payment-section">
+        <h4 style="text-align: center;">Pay with Debit/Credit Card</h4>
+          <a href="https://stripe.com">
+            <button id="credit_card_payment_btn" type="button" class="btn btn-secondary">Proceed to Pay</button>
+          </a>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit">Submit Payment</button>
+      </div>
+    </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all necessary elements
+      const bankTransferDetails = document.getElementById('bank_transfer_details');
+      const jazzCashDetails = document.getElementById('jazzcash_details');
+      const creditCardDetails = document.getElementById('credit_card_details');
+
+      const paymentMethodInputs = document.querySelectorAll('input[name="payment_method"]');
+
+      // Function to handle displaying the appropriate payment section
+      function handlePaymentSelection() {
+        const selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+
+        // Hide all sections first
+        bankTransferDetails.style.display = 'none';
+        jazzCashDetails.style.display = 'none';
+        creditCardDetails.style.display = 'none';
+
+        // Show the selected payment method's section
+        if (selectedPaymentMethod === 'bank_transfer') {
+          bankTransferDetails.style.display = 'block';
+        } else if (selectedPaymentMethod === 'jazzcash') {
+          jazzCashDetails.style.display = 'block';
+        } else if (selectedPaymentMethod === 'credit_card') {
+          creditCardDetails.style.display = 'block';
+        }
+      }
+
+      // Add event listeners to the payment method radio buttons
+      paymentMethodInputs.forEach(input => {
+        input.addEventListener('change', handlePaymentSelection);
+      });
+
+      // Run the function on page load in case a payment method is pre-selected
+      handlePaymentSelection();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,952 @@
+:root {
+  --primary-color: #2E7D32; /* Deep Forest Green */
+  --secondary-color: #E57373; /* Rich Terracotta */
+  --accent-color: #FBC02D; /* Mustard Yellow */
+  --neutral-base: #F5F5DC; /* Warm Beige */
+  --text-color: #333;
+  --text-light-color: #FFF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Rubik';
+    background-color: var(--neutral-base);
+    color: var(--text-color);
+}
+
+h1, h2, h3, h4, p, label, ul, li, input, a, textarea {
+  font-family: 'Rubik', 'sans-serif';
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #2E7D32; /* Deep Forest Green */
+    padding: 10px 20px; /* Adds padding for better spacing */
+    position: sticky; /* Makes the navbar stick to the top */
+    top: 0; /* Sticks to the top */
+    z-index: 1000; /* Ensures it stays above other content */
+}
+
+.navbar-brand {
+    color: #F5F5DC !important; /* Warm Beige */
+    font-size: 1.8rem; /* Slightly larger font size */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+    width: 40px; /* Sets a fixed width for the logo */
+}
+
+.navbar-nav .nav-link {
+    color: #F5F5DC !important; /* Warm Beige */
+    font-size: 1rem;
+    font-weight: 500;
+    padding-left: 20px;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.nav-link:hover {
+    color: #FBC02D !important; /* Mustard Yellow */
+}
+
+/* Contact Information Styling */
+.contact-info {
+    color: #F5F5DC; /* Warm Beige */
+    font-size: 0.9rem; /* Smaller font size */
+    margin-left: auto; /* Pushes the contact info to the right */
+    display: flex;
+    align-items: center; /* Centers the content vertically */
+}
+
+.contact-info span {
+    margin-left: 15px; /* Space between icons and text */
+}
+
+
+/* Headings */
+h1 {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  transition: transform 0.6s ease; /* Slow animation */
+}
+
+.banner-text {
+  color: var(--neutral-base);
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 2.0rem;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.banner-container {
+  position: relative;
+  background-image: url('/static/images/banner3.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease; /* Smooth transition for sliding */
+  z-index: 1; /* Set lower z-index to position behind dropdown */
+}
+
+.et-hero-tabs-container {
+  position: relative; /* Ensure this is positioned relative to the banner */
+  z-index: 1000; /* Higher z-index to ensure it appears above the banner */
+}
+
+
+.navbar {
+  background-color: #2E7D32; /* Deep Forest Green */
+  padding: 10px 20px; /* Adds padding for better spacing */
+  position: sticky; /* Makes the navbar stick to the top */
+  top: 0; /* Sticks to the top */
+  z-index: 1000; /* Ensures it stays above other content */
+}
+
+
+.greeting {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: #F5F5DC;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.6s ease; /* Slow animation */
+}
+
+.greeting h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.greeting p {
+    font-size: 1.2rem;
+}
+
+/* About Us Section */
+#aboutus {
+  background-color: var(--text-light-color);
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.6s ease; /* Slow animation */
+  border-left: 5px solid var(--accent-color); /* Accent touch */
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #2E7D32; /* Deep Forest Green */
+    color: #F5F5DC;
+}
+
+.footer .container {
+    padding: 10px;
+}
+
+/* Base styles for p and a tags */
+p {
+  font-size: 1.0rem;
+}
+
+a {
+  font-size: 1rem;
+  padding: 10px 20px;
+}
+
+/* Responsive Design */
+
+/* Medium screens (up to 768px) */
+@media (max-width: 768px) {
+  .greeting {
+      text-align: center; /* Center content on smaller screens */
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  .greeting h1 {
+      font-size: 2rem;
+  }
+
+  .greeting p {
+      font-size: 1rem;
+  }
+
+  a {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+  }
+}
+
+/* Small screens (up to 576px) */
+@media (max-width: 576px) {
+  .greeting {
+      text-align: center;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  
+  .greeting h1 {
+      font-size: 1.5rem;
+  }
+
+  .greeting p {
+      font-size: 0.9rem;
+  }
+
+  .banner-container {
+      height: 300px;
+  }
+
+  a {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+  }
+}
+
+/* Extra small screens (up to 400px) */
+@media (max-width: 400px) {
+  .greeting {
+      text-align: center;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  
+  .greeting p {
+      font-size: 0.85rem;
+  }
+
+  a {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 991px) {
+  .greeting {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center; /* Center text for this screen size */
+  }
+
+  .banner-container {
+      justify-content: center;
+      align-items: center;
+  }
+}
+
+/* Large screens (up to 992px) */
+@media (max-width: 992px) {
+  .greeting {
+      text-align: left; /* Ensure normal on large screens */
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  
+  .greeting p {
+      font-size: 1.1rem;
+  }
+
+  a {
+      font-size: 0.95rem;
+      padding: 9px 18px;
+  }
+}
+
+/* Extra-large screens (up to 1200px) */
+@media (max-width: 1200px) {
+  .greeting {
+      text-align: left; /* Ensure normal on larger screens */
+  }
+  
+  .greeting p {
+      font-size: 1.15rem;
+  }
+
+  a {
+      font-size: 0.98rem;
+      padding: 9px 18px;
+  }
+}
+
+/* Course Cards */
+
+.course-title {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 10px 0;
+  transition: color 0.6s ease;
+}
+
+.course-desc {
+  color: var(--text-color);
+  margin-top: 10px;
+  display: none; /* Pehle se hidden rakhein */
+  opacity: 0; /* Initial opacity 0 rakhein */
+  transition: opacity 0.3s ease;
+}
+
+.course-title:hover {
+  color: var(--accent-color);
+}
+
+/* Jab course title par hover karein */
+.course-title:hover + .course-desc {
+  display: block; /* Dikhana hai jab hover karein */
+  opacity: 1; /* Opacity ko 1 karna */
+}
+
+
+.course-title {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: color 0.6s ease; /* Slow animation */
+}
+
+.course-desc {
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+/* Card container */
+.card-container {
+  display: flex; /* Display cards in a row */
+  justify-content: space-around; /* Space out the cards */
+  flex-wrap: wrap; /* Wrap to the next line on small screens */
+  margin: 20px 0; /* Margin around the card container */
+}
+
+.card {
+  position: relative; /* Position relative for absolute positioning of content */
+  width: 300px; /* Fixed width for the card */
+  margin: 10px; /* Margin around each card */
+  overflow: hidden; /* Hide overflow */
+  transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale up the card on hover */
+}
+
+.card-img {
+  width: 100%; /* Image takes full width of the card */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.card-content {
+  position: absolute; /* Absolute positioning for overlay */
+  bottom: 0; /* Position at the bottom */
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  color: #F5F5DC; /* Text color */
+  padding: 15px; /* Padding for content */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s ease; /* Smooth fade in/out */
+}
+
+.card:hover .card-content {
+  opacity: 1; /* Show content on hover */
+}
+
+
+/* Outlined Button Styling */
+.btn-course {
+    background-color: transparent; /* No background */
+    color: var(--secondary-color); /* Text color */
+    border: 2px solid var(--secondary-color); /* Border color */
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.6s ease, color 0.6s ease; /* Slow animation */
+}
+
+.btn-course:hover {
+    background-color: var(--secondary-color); /* Fill color on hover */
+    color: var(--text-light-color); /* Change text color on hover */
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .btn-course {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Course Expansion */
+.course {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.course:last-child {
+  border: none;
+}
+
+.course-content {
+  display: none;
+  padding: 10px 20px;
+}
+
+/* Register Button */
+.register-btn {
+  background-color: #3aafa9;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.6s ease; /* Slow animation */
+}
+
+.register-btn:hover {
+  background-color: #2b7a78;
+}
+
+
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* CSS Section 2 */
+
+/* Registration Form */
+/* Form Styling - Aligned to Left */
+/* General Form Styling */
+.registration-form {
+  background-color: var(--text-light-color);
+  border-radius: 12px; /* Increased border radius for a smoother look */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  padding: 25px; /* Increased padding for spaciousness */
+  margin: 30px auto; /* Centered margin */
+  transition: transform 0.4s ease;
+  border-left: 8px solid var(--accent-color); /* Thicker border */
+  max-width: 660px; /* Increased max-width */
+}
+
+/* Form Header */
+.registration-form h1 {
+  text-align: center;
+  margin-bottom: 20px; /* Adjusted margin */
+  font-family: 'Arial', sans-serif; /* Added a clean font style */
+  font-size: 2rem; /* Increased font size for visibility */
+  color: var(--primary-color);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Added text shadow for depth */
+}
+
+/* Label Styling */
+.registration-form label {
+  font-size: 1rem; /* Slightly larger font size */
+  font-weight: 600; /* Increased font weight for emphasis */
+  margin-bottom: 6px; /* Increased margin for spacing */
+  color: var(--text-color);
+}
+
+/* Input, Select, and Textarea Styling */
+.registration-form input,
+.registration-form select,
+.registration-form textarea {
+  width: 100%;
+  padding: 12px; /* Increased padding for comfort */
+  margin-bottom: 15px; /* Increased margin */
+  border: 2px solid var(--neutral-base);
+  border-radius: 6px; /* More rounded corners */
+  font-size: 1rem; /* Slightly larger font size */
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.registration-form input:focus,
+.registration-form select:focus,
+.registration-form textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 5px var(--accent-color); /* Added shadow on focus */
+}
+
+/* Checkbox Styling */
+.registration-form .checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px; /* Increased margin */
+}
+
+.registration-form .checkbox-container input[type="checkbox"] {
+  appearance: none;
+  margin-right: 10px; /* Increased margin */
+  width: 20px; /* Larger checkbox */
+  height: 20px; /* Larger checkbox */
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  background-color: var(--text-light-color);
+  cursor: pointer;
+  transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+.registration-form .checkbox-container input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  transform: scale(1.1); /* Slight scale effect on check */
+}
+
+.registration-form .checkbox-container input[type="checkbox"]:checked::after {
+  content: "✔";
+  font-size: 14px; /* Adjusted checkmark size */
+  color: var(--text-light-color);
+  position: relative; /* Relative positioning for better alignment */
+  left: 3px; /* Adjusted position */
+}
+
+/* Hidden Textarea for Prior Experience */
+#prior-experience-textarea {
+  display: none; /* Initially hidden */
+  opacity: 0;
+  transition: opacity 0.4s ease, margin-top 0.4s ease; /* Smooth transition */
+}
+
+.show-textarea {
+  display: block;
+  opacity: 1; /* Smooth transition in */
+  margin-top: 10px; /* Added margin for spacing */
+}
+
+/* Attractive Submit Button */
+.registration-form button {
+  background-color: var(--secondary-color);
+  color: var(--text-light-color);
+  border: none;
+  padding: 12px; /* Increased padding */
+  border-radius: 6px; /* More rounded corners */
+  font-size: 1.2rem; /* Larger font size for emphasis */
+  cursor: pointer;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+  width: 100%;
+}
+
+.registration-form button:hover {
+  background-color: var(--primary-color);
+  transform: scale(1.05); /* Slightly larger on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .registration-form {
+    padding: 20px; /* Adjusted padding for smaller screens */
+  }
+  
+  .registration-form h1 {
+    font-size: 1.8rem; /* Adjusted header size */
+  }
+  
+  .registration-form input,
+  .registration-form select,
+  .registration-form textarea {
+    font-size: 0.95rem; /* Slightly adjusted font size */
+  }
+  
+  .registration-form button {
+    font-size: 1.1rem; /* Adjusted button size */
+  }
+}
+
+#prior-experience-textarea {
+  display: none; /* Initially hidden */
+  opacity: 0;
+  transition: opacity 0.4s ease; /* Smooth fade-in effect */
+}
+
+.show-textarea {
+  display: block;
+  opacity: 1; /* Smooth transition in */
+}
+
+.hidden-textarea {
+  display: none; /* Initially hidden */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Base styling for the checkbox container */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Space below the checkbox section */
+}
+
+/* Label styling */
+.checkbox-container label {
+  font-size: 1rem; /* Slightly larger font size */
+  color: var(--text-color);
+  margin-right: 10px; /* Space between label and options */
+}
+
+/* Style the radio buttons */
+.radio-options {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; /* Aligns items in a row */
+  align-items: center; /* Aligns radio buttons and labels vertically in the center */
+  gap: 15px; /* Adds space between the different radio options */
+  margin-top: 10px;
+}
+
+.radio-options input[type="radio"] {
+  margin-right: 5px; 
+  vertical-align: middle; 
+  display: inline-block;
+  appearance: none; /* Remove default styling */
+  width: 20px; /* Set width */
+  height: 20px; /* Set height */
+  border-radius: 50%; /* Make it round */
+  border: 2px solid var(--primary-color); /* Border color */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Styling for checked radio button */
+.radio-options input[type="radio"]:checked {
+  background-color: var(--primary-color); /* Background color for checked */
+  border: 2px solid var(--secondary-color); /* Change border color */
+}
+
+/* Label styling for radio buttons */
+.radio-options label {
+  margin-left: 5px;
+  display: inline-block;
+  font-size: 1rem; /* Match font size with checkbox label */
+  color: var(--text-color); /* Text color */
+  cursor: pointer; /* Pointer on hover */
+}
+
+/* Optional: Add hover effect */
+.radio-options input[type="radio"]:hover {
+  border-color: var(--secondary-color); /* Change border color on hover */
+}
+
+/* Responsive layout: Make sure radio buttons fit within smaller containers */
+@media (max-width: 768px) {
+  .radio-options {
+    flex-direction: column; /* Stack items on smaller screens */
+    align-items: flex-start;
+  }
+}
+
+/* Payment Section: Adjust radio options to align properly */
+.payment-method .radio-options {
+  display: flex; /* Stack options vertically */
+  gap: 10px; /* Space between radio buttons */
+  margin-top: 10px; /* Top margin */
+}
+
+.payment-method input[type="radio"] {
+  margin-right: 8px; /* Space between radio button and label */
+  appearance: none; /* Remove default styling */
+  width: 20px; /* Set width for radio button */
+  height: 20px; /* Set height for radio button */
+  border-radius: 50%; /* Make radio button round */
+  border: 2px solid var(--primary-color); /* Use primary color for the border */
+  outline: none; /* Remove focus outline */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.payment-method input[type="radio"]:checked {
+  background-color: var(--primary-color); /* Set background for checked state */
+  border-color: var(--secondary-color); /* Change border when checked */
+}
+
+.payment-method label {
+  margin-left: 5px;
+  font-size: 1rem; /* Label font size */
+  color: var(--text-color); /* Label color */
+  cursor: pointer; /* Cursor pointer for labels */
+}
+
+/* Optional: Hover effect on radio buttons */
+.payment-method input[type="radio"]:hover {
+  border-color: var(--secondary-color); /* Change border color on hover */
+}
+
+.dropdown-menu {
+  background-color: var(--text-light-color);
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.6s ease; /* Slow animation */
+  border-left: 5px solid var(--accent-color); /* Accent touch */
+  margin-bottom: 15px;
+}
+
+.dropdown.show .dropdown-menu {
+  display: block; /* Ensure it displays */
+  opacity: 1; /* Fade in effect */
+  visibility: visible; /* Make it visible when opened */
+}
+
+.dropdown-item {
+  color: #2E7D32; /* Use the deep forest green color for items */
+  padding: 10px 20px; /* Adjust padding */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+  background-color: #FBC02D; /* Highlight color on hover */
+  color: #FFFFFF; /* White text on hover */
+}
+
+.contact-section {
+  background-color: #F5F5DC; /* Neutral Base */
+  padding: 50px 0;
+}
+
+.section-title {
+  text-align: center;
+  color: #2E7D32; /* Deep Forest Green */
+  margin-bottom: 30px;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  color: #2E7D32; /* Deep Forest Green */
+  font-weight: bold;
+}
+
+.contact-form .form-control {
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form .btn-primary {
+  background-color: var(--primary-color);
+  color: #FFFFFF; /* White */
+  border: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form .btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.contact-info {
+  background-color: var(--text-light-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h4 {
+  color: #2E7D32; /* Deep Forest Green */
+}
+
+.contact-details {
+  list-style: none;
+  padding: 0;
+  color: #2E7D32; /* Deep Forest Green */
+}
+
+.course-section {
+  background-color: #F5F5DC; /* Neutral Base */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-section h2 {
+  color: #2E7D32; /* Primary Color */
+}
+
+.course-section p {
+  color: #E57373; /* Secondary Color */
+  font-weight: bold;
+}
+
+.course-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.course-section li {
+  margin: 5px 0;
+}
+
+.btn-primary {
+  background-color: #FBC02D; /* Accent Color */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  background-color: #E57373; /* Secondary Color on hover */
+}
+
+.course-desc {
+  display: none; /* Hide description by default */
+  transition: all 0.3s ease;
+}
+
+.course-title {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.course-card {
+  position: relative;
+  background-color: var(--text-light-color);
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: transform 0.6s ease;
+  border-left: 5px solid var(--accent-color);
+  overflow: hidden; /* Overflow ko hide karein */
+}
+
+.course-card:hover {
+  transform: scale(1.05); /* Slightly grow on hover */
+}
+
+.course-card img {
+  border-radius: 15px;
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+
+/* Course Description */
+.course-desc {
+  color: var(--text-color);
+  margin-top: 10px;
+  max-height: 0; /* Initially hidden */
+  overflow: hidden; /* Hide overflowing content */
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0; /* Initial opacity */
+}
+
+/* Show description on hover */
+.course-card:hover .course-desc {
+  max-height: 200px; /* Set a max-height to allow for slide down effect */
+  opacity: 1; /* Change opacity to 1 for fade effect */
+}
+
+/* Hide content when pointer is not on the card */
+.course-card:not(:hover) .course-desc {
+  max-height: 0; /* Ensure description is hidden when not hovering */
+  opacity: 0; /* Keep it hidden */
+}
+
+/* Ensure p and ul tags are hidden when not hovering */
+.course-card:not(:hover) p,
+.course-card:not(:hover) ul {
+  display: none; /* Hide p and ul when not hovering */
+}
+
+/* Show p and ul when hovering */
+.course-card:hover p,
+.course-card:hover ul {
+  display: block; /* Show p and ul when hovering */
+}
+
+.navbar {
+  background-color: #F5F5DC; /* Warm Beige */
+  border-bottom: 5px solid #2E7D32; /* Deep Forest Green */
+  padding: 20px 0;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-links a {
+  margin: 0 15px;
+  color: #2E7D32; /* Deep Forest Green */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #FBC02D; /* Mustard Yellow (Accent Color) */
+}
+
+.footer {
+  background-size: cover;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.footer-content {
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.phone, .email {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #2E7D32; /* Deep Forest Green */
+}
+
+.footer-bottom {
+  font-size: 14px;
+  color: #ccc;
+}

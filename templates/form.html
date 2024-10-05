@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+    body {
+      background-image: url('/static/images/logosec.jpg'); /* پس منظر کی تصویر کا URL یہاں شامل کریں */
+      background-size: cover;
+      background-position: left;
+      color: #2E7D32; /* Deep Forest Green for text */
+      }
+
+      h2 {
+        font-weight: bold;
+      }
+
+      h4 {
+        color: #F5F5DC;
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+    .container {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5); /* سیاہ شفاف پس منظر */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* تھوڑا زیادہ سایہ */
+        width: 80%; /* کنٹینر کی چوڑائی کو کم کرنا */
+        max-width: 600px; /* زیادہ سے زیادہ چوڑائی مقرر کرنا */
+        margin-left: auto; /* سینٹر میں رکھنے کے لیے */
+        margin-right: auto; /* سینٹر میں رکھنے کے لیے */
+      }
+
+      .course-container {
+        margin-top: 100px;
+        margin-bottom: 40px;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.7); /* سیاہ شفاف پس منظر */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* تھوڑا زیادہ سایہ */
+        width: 80%;
+        max-width: 600px; /* زیادہ سے زیادہ چوڑائی مقرر کرنا */
+        margin-left: auto; /* سینٹر میں رکھنے کے لیے */
+        margin-right: auto;
+        overflow: auto;
+      }
+
+    .btn-primary {
+      background-color: #FBC02D; /* Mustard Yellow */
+      border: none;
+      font-size: 1rem;
+      font-style:
+    }
+
+    .btn-primary-register {
+      background-color: #FBC02D; /* Mustard Yellow */
+      border-radius: 20px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: white;
+      width: 70%;
+      height: 50px;
+    }
+
+    .btn-primary:hover {
+      background-color: #E57373;
+      }
+
+    .btn-primary-register:hover {
+      background-color: #E57373;
+      color: white;
+      font-style: italic;
+      }
+
+    .form-control:focus {
+      border-color: #fbc02d; /* Mustard Yellow */
+      box-shadow: 0 0 8px rgba(251, 192, 45, 0.5);
+      }
+
+    .form-group label {
+      color: #F5F5DC;
+      font-size: 1.0rem;
+      }
+
+    .courses-container {
+      display: none; /* Start hidden */
+      transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Animation */
+      max-height: 0; /* Set initial max-height to 0 for animation */
+      overflow: hidden; /* Hide overflow */
+      opacity: 0; /* Start with 0 opacity */
+      }
+
+    .courses-container.show {
+      display: block; /* Show when active */
+      max-height: 400px; /* Set max-height when shown */
+      opacity: 1; /* Fade in */
+      }
+
+      button {
+        font-size: 1rem;
+      }
+
+      /* Style for the alert message container */
+      .alert-dismissible {
+          background-color: rgba(255, 255, 255, 0.8); /* White background with transparency */
+          border-radius: 8px; /* Rounded corners */
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+          padding: 15px;
+          margin-bottom: 20px;
+          border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+          max-width: 600px; /* Limit the width of the alert */
+          margin-left: auto;
+          margin-right: auto; /* Center the alert box */
+      }
+
+      /* Style for the alert message container */
+    .alert-dismissible {
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.4); /* White background with transparency */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+        max-width: 600px; /* Limit the width of the alert */
+        margin-left: auto;
+        margin-right: auto; /* Center the alert box */
+        opacity: 0; /* Initial hidden state */
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Fade-in and slide-in */
+        transform: translateY(-20px); /* Slide from above */
+    }
+
+    /* Ensure that alerts with the "show" class are visible */
+    .alert-dismissible.fade.show {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* No sliding */
+    }
+
+    /* Style for individual alert messages */
+    .alert {
+        color: #2E7D32; /* Deep Forest Green text for success messages */
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 1.0rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Adjust alert styles based on categories */
+    .alert-success {
+        background-color: rgba(46, 125, 50, 0.1); /* Light green for success background */
+        font-size: 1.0rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .alert-error {
+        background-color: rgba(229, 115, 115, 0.1); /* Light red for error background */
+        font-size: 1.0rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .btn-primary, .btn-primary-register {
+        background-color: #FBC02D; /* Mustard Yellow */
+        border: none;
+        border-radius: 8px; /* Rounded corners */
+        font-size: 1rem; /* Slightly larger font size */
+        color: white;
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    }
+
+    .btn-primary:hover, .btn-primary-register:hover {
+        background-color: #E57373; /* Hover color change */
+        transform: translateY(-3px); /* Slight upward movement on hover */
+    }
+
+    /* Form Control Styles */
+    .form-control:focus {
+        border-color: #FBC02D; /* Mustard Yellow */
+        box-shadow: 0 0 8px rgba(251, 192, 45, 0.5); /* Highlight effect */
+    }
+
+    /* Form Group Label */
+    .form-group label {
+        color: #F5F5DC; /* Label color */
+        font-size: 1.0rem;
+    }
+
+    /* Courses Container Animation */
+    .courses-container {
+        display: none; /* Start hidden */
+        transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Animation */
+        max-height: 0; /* Set initial max-height to 0 for animation */
+        overflow: hidden; /* Hide overflow */
+        opacity: 0; /* Start with 0 opacity */
+    }
+
+    .courses-container.show {
+        display: block; /* Show when active */
+        max-height: 400px; /* Set max-height when shown */
+        opacity: 1; /* Fade in */
+    }
+
+    /* Alert Message Styles */
+    .alert-dismissible {
+        background-color: rgba(255, 255, 255, 0.6); /* White background with transparency */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+        max-width: 600px; /* Limit the width of the alert */
+        margin-left: auto;
+        margin-right: auto; /* Center the alert box */
+        opacity: 0; /* Initial hidden state */
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Fade-in and slide-in */
+        transform: translateY(-20px); /* Slide from above */
+    }
+
+    .alert-dismissible.fade.show {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* No sliding */
+    }
+
+    .alert {
+        color: #2E7D32; /* Deep Forest Green text for success messages */
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 1.0rem;
+        color: white;
+        font-weight: bold;
+    }
+
+    .alert-success {
+        background-color: rgba(46, 125, 50, 0.8); /* Light green for success background */
+    }
+
+    .alert-error {
+        background-color: rgba(229, 115, 115, 0.8); /* Light red for error background */
+    }
+
+    /* Keyframe Animation */
+    @keyframes slide-in {
+        0% {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 style="color: #F5F5DC" class="text-center mb-5">Art Roots Academy Registration</h2>
+    <form method="POST" action="{{ url_for('register') }}">
+
+        <!-- Flash message display -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-dismissible fade show" role="alert">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Full Name -->
+        <div class="form-group">
+            <h4 for="full_name">Full Name</h4>
+            <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Enter your full name" required>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group">
+            <h4 for="dob">Date of Birth</h4>
+            <input type="date" class="form-control" id="dob" name="dob" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <h4 for="email">Email</h4>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+            <h4 for="phone">Phone Number</h4>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+
+        <!-- Contact Method -->
+        <div class="form-group">
+            <h4 for="contact_method">Preferred Contact Method</h4>
+            <select class="form-control" id="contact_method" name="contact_method" required>
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+            </select>
+        </div>
+
+      <!-- Course Category -->
+      <div class="course-container mt-5">
+      <h2 style="color: #F5F5DC">Select a Course Category</h2>
+
+      <!-- Course Category Buttons -->
+      <div id="course_category" required>
+          <input type="hidden" name="course_category" id="selected_course_category">
+          <button name="course_category" type="button" class="btn btn-primary category-button" data-category="graphic-design">Graphic Design</button>
+          <button name="course_category" type="button" class="btn btn-primary category-button" data-category="art-calligraphy">Art & Calligraphy</button>
+          <button name="course_category" type="button" class="btn btn-primary category-button" data-category="development">Development</button>
+      </div>
+
+      <!-- Courses in Graphic Design -->
+      <div id="courses-graphic-design" class="courses-container mt-5">
+          <h4 style="font-size: 1.4rem;">Courses in Graphic Design</h4>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" id="graphic_design_course" name="courses" value="Graphic Design - Beginner & Advanced">
+              <label style="color: #F5F5DC" class="form-check-label" for="graphic_design_course">Graphic Design - Beginner & Advanced</label>
+              <ul class="mt-3" style="color: #F5F5DC;">
+                  <li><strong>Registration Fee:</strong> 2000</li>
+                  <li><strong>Course Fee:</strong> 12000</li>
+                  <li><strong>Course Duration:</strong> 12 Weeks</li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Courses in Art & Calligraphy -->
+      <div id="courses-art-calligraphy" class="courses-container mt-5">
+          <h4 style="font-size: 1.4rem;">Courses in Art & Calligraphy</h4>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" id="drawing_course" name="courses" value="Drawing and Art - Beginner">
+              <label style="color: #F5F5DC" class="form-check-label" for="drawing_course">Drawing and Art - Beginner</label>
+              <ul class="mt-3" style="color: #F5F5DC;">
+                  <li><strong>Registration Fee:</strong> 1000</li>
+                  <li><strong>Course Fee:</strong> 6000</li>
+                  <li><strong>Course Duration:</strong> 8 Weeks</li>
+              </ul>
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input" type="radio" id="calligraphy_course" name="courses" value="Arabic Calligraphy - (8 Weeks)">
+              <label style="color: #F5F5DC" class="form-check-label" for="calligraphy_course">Arabic Calligraphy - (8 Weeks)</label>
+              <ul class="mt-3" style="color: #F5F5DC;">
+                  <li><strong>Registration Fee:</strong> 5000</li>
+                  <li><strong>Course Fee:</strong> 6000</li>
+                  <li><strong>Course Duration:</strong> 8 Weeks</li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Courses in Development -->
+      <div id="courses-development" class="courses-container mt-5">
+          <h4 style="font-size: 1.4rem;">Courses in Development</h4>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" id="oracle_sql_course" name="courses" value="Oracle SQL & PL/SQL Programming">
+              <label style="color: #F5F5DC" class="form-check-label" for="oracle_sql_course">Oracle SQL & PL/SQL Programming</label>
+              <ul class="mt-3" style="color: #F5F5DC;">
+                  <li><strong>Registration Fee:</strong> 5000</li>
+                  <li><strong>Course Fee:</strong> 60000</li>
+                  <li><strong>Course Duration:</strong> 12 Weeks</li>
+              </ul>
+          </div>
+
+          <div class="form-check">
+              <input class="form-check-input" type="radio" id="oracle_app_dev_course" name="courses" value="Oracle Application Development (Advance)">
+              <label style="color: #F5F5DC" class="form-check-label" for="oracle_app_dev_course">Oracle Application Development (Advance)</label>
+              <ul class="mt-3" style="color: #F5F5DC;">
+                  <li><strong>Advanced Course Fee:</strong> 85000</li>
+                  <li><strong>Course Duration:</strong> 12 Weeks</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+        <!-- Referral -->
+        <div class="form-group mb-4">
+            <h4 style="font-size: 1.4rem;" for="referral">How did you hear about us?</h4><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="referral1" name="referral" value="Social Media">
+                <label class="form-check-label" for="referral1">Social Media</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="referral2" name="referral" value="Friends/Family">
+                <label class="form-check-label" for="referral2">Friends/Family</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="referral1" name="referral" value="Website">
+                <label class="form-check-label" for="referral1">Website</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="referral1" name="referral" value="Other">
+                <label class="form-check-label" for="referral1">Other</label>
+            </div>
+        </div>
+
+        <!-- Prior Experience -->
+        <div class="form-group mb-4">
+          <h4 for="prior_experience">Do You Have Any Prior Experience?</h4>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="prior_yes" name="prior_experience" value="Yes" onchange="toggleExperienceDetails(this)" required>
+                <label class="form-check-label" for="prior_yes">Yes</label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" id="prior_no" name="prior_experience" value="No" onchange="toggleExperienceDetails(this)" required>
+                  <label class="form-check-label" for="prior_no">No</label>
+              </div>
+          </div>
+
+          <!-- Additional Experience Info -->
+          <div id="prior-experience-info" class="courses-container mb-4" style="display: none;">
+              <h4 for="experience_details" style="font-size: 1.4rem;">Please Describe Your Prior Experience</h4>
+              <textarea class="form-control" id="experience_details" name="experience_details" rows="3" placeholder="Describe your prior experience"></textarea>
+          </div>
+
+        <!-- Payment Method -->
+        <div class="form-group mb-4">
+          <h4 style="font-size: 1.4rem;" for="payment_method">Preferred Payment Method</h4>
+          <div class="form-group">
+            <h4 for="payment_method">Select Payment Method</h4>
+            <select class="form-control" id="payment_method" name="payment_method" required>
+                <option value="" disabled selected>Select your payment method</option>
+                <option value="debit/credit_card">Debit/Credit Card</option>
+                <option value="jazzcash">Jazzcash</option>
+                <option value="bank_transfer">Bank Transfer</option>
+            </select>
+        </div>
+
+        <button type="button" class="btn btn-primary" target='_blank' onclick="redirectToPayment()">Proceed to Payment</button>
+        </div>
+
+        <div class="form-group mb-4">
+            <h4 id="terms" style="font-size: 1.4rem;" for="agree">Terms & Conditions</h4>
+            <ul style="color: #F5F5DC;">
+              <li>First payment is required  before the course begins.</li>
+              <li>Classes are non-refundable but may be rescheduled.</li>
+            </ul>
+
+            <div class="form-check form-check-inline" required>
+                <input class="form-check-input" type="radio" id="agree" name="agree" value="Agree">
+                <label class="form-check-label" for="referral1">I agree to the <a href="#terms">
+                  Terms & Conditions
+                </a></label>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary-register">Submit Registration</button>
+        </div>
+
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Course category button click event
+        $('.category-button').click(function() {
+            var category = $(this).data('category');
+            $('.courses-container').removeClass('show'); // Hide all courses
+            $('#courses-' + category).addClass('show'); // Show selected category
+        });
+
+        // Show experience details textarea when 'Yes' is selected
+        $('input[name="experience"]').change(function() {
+            if ($('#experience_yes').is(':checked')) {
+                $('#experience_details_container').show();
+            } else {
+                $('#experience_details_container').hide();
+            }
+        });
+    });
+
+    // Show/Hide Course Options
+      const categoryButtons = document.querySelectorAll('.category-button');
+      const coursesContainers = document.querySelectorAll('.courses-container');
+
+      categoryButtons.forEach(button => {
+          button.addEventListener('click', () => {
+              const category = button.getAttribute('data-category');
+
+              // Hide all course containers
+              coursesContainers.forEach(container => {
+                  container.classList.remove('show');
+              });
+
+              // Show selected course container
+              document.getElementById(`courses-${category}`).classList.add('show');
+
+              // Update selected course category
+              document.getElementById('selected_course_category').value = category;
+          });
+      });
+
+      // Show/Hide Prior Experience Info
+      const priorExperienceRadios = document.querySelectorAll('input[name="prior_experience"]');
+
+      priorExperienceRadios.forEach(radio => {
+          radio.addEventListener('change', () => {
+              const experienceInfo = document.getElementById('prior-experience-info');
+              if (radio.value === 'Yes') {
+                  experienceInfo.classList.add('show');
+              } else {
+                  experienceInfo.classList.remove('show');
+              }
+          });
+      });
+      function toggleExperienceDetails(radio) {
+        var detailsDiv = document.getElementById('experienceDetails');
+        if (radio.value === 'Yes') {
+            detailsDiv.style.display = 'block';
+        } else {
+            detailsDiv.style.display = 'none';
+        }
+    }
+
+    function toggleExperienceDetails(radio) {
+        const experienceInfo = document.getElementById('prior-experience-info');
+        const experienceDetailTextarea = document.getElementById('experience_details');
+
+        if (radio.value === 'Yes') {
+            experienceInfo.style.display = 'block'; // Show the textarea
+            experienceDetailTextarea.value = ''; // Clear the textarea when Yes is selected
+        } else {
+            experienceInfo.style.display = 'none'; // Hide the textarea
+            experienceDetailTextarea.value = ''; // Clear the textarea when No is selected
+        }
+    }
+
+    function redirectToPayment() {
+      var paymentMethod = document.getElementById('payment_method').value;
+      var url;
+
+      switch (paymentMethod) {
+          case 'debit/credit_card':
+              url = "{{ url_for('payment') }}";
+              break;
+          case 'jazzcash':
+              url = "/payment";
+              break;
+          case 'bank_transfer':
+              url = "/payment";
+              break;
+          default:
+              alert("Please select a payment method.");
+              return;
+      }
+
+    window.location.href = url;
+}
+
+function redirectToPayment() {
+    // Payment page ka URL yahan daalain
+    const paymentUrl = "/payment"; // Is URL ko apne payment page se replace karein
+
+    // Naye tab mein payment page kholain
+    window.open(paymentUrl, '_blank');
+}
+
+
+  </script>
+
+</body>
+</html>

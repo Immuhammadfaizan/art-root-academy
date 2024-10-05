@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="contact" class="wrapper">
+    <form action="#">
+      <h2>Contact Us</h2>
+      <!-- You can add your input fields here -->
+
+      <a href="mailto:amandfati222@gmail.com?subject=Your%20Subject%20of%20Matter%20Here!&body=Welcome%20to%20the%20ART%20ROOT%20ACADEMY!%0D%0AWe%20are%20here%20for%20you%20to%20submit%20your%20problem%20or%20get%20any%20information!%0D%0A%0D%0A%3CEnter%20your%20Full%20Name%3F%3E%0D%0A%3CEnter%20your%20Email%20Address.%3E%0D%0A%3CEnter%20your%20Subject%20of%20matter.%3E%0D%0A%3CYour%20Problem%3F%3E%0D%0A%0D%0A%0D%0A%0D%0A%0D%0A">
+        <button type="button">Send Message</button>
+      </a>
+
+    </form>
+  </div>
+
+<style media="screen">
+  @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Ensures full height */
+    width: 100%;
+    background-color: #2E7D32; /* Deep Forest Green as a fallback */
+    padding: 0 10px;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("https://cdn.pixabay.com/photo/2015/01/25/21/02/phone-612061_1280.jpg") no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.8;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    z-index: 1; /* Ensure it stays above the background */
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  button {
+    background-color: #fbc02d; /* Mustard Yellow */
+    color: #fff;
+    width: 100%;
+    font-weight: 600;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #e57373; /* Rich Terracotta */
+    color: #fff;
+  }
+
+  @keyframes fadeInUp {
+      0% {
+          opacity: 0;
+          transform: translateY(30px);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  .wrapper {
+      animation: fadeInUp 0.8s ease-in-out;
+  }
+
+  button {
+      animation: fadeInUp 1s ease-in-out;
+  }
+  
+</style>
+
+</body>
+</html>
