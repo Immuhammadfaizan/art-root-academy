@@ -8,7 +8,7 @@ import uuid
 DB_USERNAME = os.environ.get('DB_USERNAME')
 DB_PASSWORD = os.environ.get('DB_PASSWORD')
 DB_HOSTNAME = os.environ.get('DB_HOSTNAME', 'localhost')
-DB_NAME = os.environ.get('DB_NAME', 'art_academy')
+DB_NAME = os.environ.get('DB_NAME', 'careersoncloud')
 
 engine_url = f'mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOSTNAME}/{DB_NAME}?charset=utf8mb4'
 engine = create_engine(engine_url)
