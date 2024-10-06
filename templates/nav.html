@@ -1,49 +1,73 @@
-<!-- Upper Section: Logo and Contact Info -->
-<section class="info-section background-section">
-    <div class="container d-flex justify-content-between align-items-center flex-wrap">
-        <!-- Logo -->
-        <div class="d-flex flex-column align-items-center">
-          <a class="navbar-brand" href="/">
-              <img src="/static/images/navlogo.png" alt="Art Root Academy">
-          </a>
-      </div>
 
-        <!-- Contact Info -->
-        <div class="d-flex align-items-center justify-content-around contact-info py-3">
-            <div class="contact-item">
-                <p class="mb-1 fw-bold">Contact via Phone</p>
-                <span class="phone">
-                    <i class="fa-solid fa-phone me-2"></i> +92 320-7074209
-                </span>
-            </div>
-            <div class="contact-item">
-                <p class="mb-1 fw-bold">Contact via Email</p>
-                <a href="mailto:amandfati222@gmail.com?subject=Information%20About%20the%20Course(s)" class="email">
-                    <i class="fa-solid fa-envelope me-2"></i> art-root-academy@gmail.com
-                </a>
-            </div>
+  <!-- Upper Section: Logo and Contact Info -->
+  <section class="info-section background-section">
+      <div class="container d-flex justify-content-between align-items-center flex-wrap">
+          <!-- Logo -->
+          <div class="d-flex flex-column align-items-center">
+            <a class="navbar-brand" href="/">
+                <img src="/static/images/navlogo.png" alt="Art Root Academy">
+            </a>
         </div>
-    </div>
-</section>
 
-<section class="et-hero-tabs">
-    <div class="et-hero-tabs-container">
-      <a class="et-hero-tab" href="/">Home</a>
-      <a class="et-hero-tab dropdown-toggle" href="/#courses" id="coursesDropdown" role="button" aria-expanded="false"  onclick="toggleDropdown(event)">
-          Courses
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
-          <li><a class="dropdown-item" href="#designing">Designing Courses</a></li>
-          <li><a class="dropdown-item" href="#art">Art and Calligraphy Courses</a></li>
-          <li><a class="dropdown-item" href="#development">Development Courses</a></li>
-      </ul>
-
-      <a class="et-hero-tab" target="_blank" href="{{ url_for('register') }}#registration">Registration</a>
-      <a class="et-hero-tab" href="/#aboutus">About us</a>
-      <a class="et-hero-tab" target="_blank" href="{{ url_for('contact') }}#contact">Contact us</a>
-      <span class="et-hero-tab-slider"></span>
-    </div>
+          <!-- Contact Info -->
+          <div class="d-flex align-items-center justify-content-around contact-info py-3">
+              <div class="contact-item">
+                  <p class="mb-1 fw-bold">Contact via Phone</p>
+                  <span class="phone">
+                      <i class="fa-solid fa-phone me-2"></i> +92 320-7074209
+                  </span>
+              </div>
+              <div class="contact-item">
+                  <p class="mb-1 fw-bold">Contact via Email</p>
+                  <a href="mailto:amandfati222@gmail.com?subject=Information%20About%20the%20Course(s)" class="email">
+                      <i class="fa-solid fa-envelope me-2"></i> art-root-academy@gmail.com
+                  </a>
+              </div>
+          </div>
+      </div>
   </section>
+
+
+  <header>
+    <section class="et-hero-tabs">
+        <div class="et-hero-tabs-container">
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <a class="et-hero-tab" href="/">Home</a>
+            <a class="et-hero-tab dropdown-toggle" href="/#courses" id="coursesDropdown" role="button" aria-expanded="false" onclick="toggleDropdown(event)">
+                Courses
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
+                <li><a class="dropdown-item" href="#designing">Designing Courses</a></li>
+                <li><a class="dropdown-item" href="#art">Art and Calligraphy Courses</a></li>
+                <li><a class="dropdown-item" href="#development">Development Courses</a></li>
+            </ul>
+            <a class="et-hero-tab" target="_blank" href="{{ url_for('register') }}#registration">Registration</a>
+            <a class="et-hero-tab" href="/#aboutus">About us</a>
+            <a class="et-hero-tab" target="_blank" href="{{ url_for('contact') }}#contact">Contact us</a>
+            <span class="et-hero-tab-slider"></span>
+        </div>
+
+        <!-- Mobile Menu for Small Screens -->
+        <div class="mobile-menu" id="mobile-menu-list">
+            <a class="et-hero-tab" href="/">Home</a>
+            <a class="et-hero-tab dropdown-toggle" href="" id="coursesDropdownMobile" role="button" aria-expanded="false" onclick="toggleDropdown(event)">
+                Courses
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="coursesDropdownMobile">
+                <li><a class="dropdown-item" href="#designing">Designing Courses</a></li>
+                <li><a class="dropdown-item" href="#art">Art and Calligraphy Courses</a></li>
+                <li><a class="dropdown-item" href="#development">Development Courses</a></li>
+            </ul>
+            <a class="et-hero-tab" target="_blank" href="{{ url_for('register') }}#registration">Registration</a>
+            <a class="et-hero-tab" href="/#aboutus">About us</a>
+            <a class="et-hero-tab" target="_blank" href="{{ url_for('contact') }}#contact">Contact us</a>
+        </div>
+    </section>
+</header>
 
 <!-- Banner Container -->
 <div class="banner-container">
@@ -54,6 +78,112 @@
 </div>
 
 <style>
+  .mobile-menu {
+    display: none; /* By default, hidden */
+    flex-direction: column;
+    align-items: center;
+    background-color: white; /* Background for mobile menu */
+    position: absolute;
+    top: 60px; /* Adjust according to header height */
+    width: 100%; /* Full width */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu a {
+    padding: 15px;
+    text-align: center;
+    color: #333; /* Link color */
+    text-decoration: none;
+    width: 100%; /* Full width links */
+}
+
+/* Show mobile menu on active class */
+#mobile-menu-list.active {
+    display: flex;
+}
+
+/* Default styles for larger screens */
+.et-hero-tabs-container {
+    display: flex; /* Show original tabs */
+    flex-direction: row; /* Horizontal layout */
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none; /* Hide hamburger menu */
+}
+
+/* Medium devices (tablets, 768px and below) */
+@media (max-width: 768px) {
+    .et-hero-tabs-container {
+        display: none; /* Hide original tabs */
+        flex-direction: column; /* Vertical layout */
+        align-items: center;
+    }
+
+    .et-hero-tabs-container.active {
+        display: flex; /* Show tabs when active */
+    }
+
+    .menu-toggle {
+        display: flex; /* Show hamburger menu */
+    }
+}
+
+/* Small devices (phones, 480px and below) */
+@media (max-width: 480px) {
+    .et-hero-tabs-container {
+        padding: 10px; /* Optional: Add padding for better touch targets */
+    }
+
+    .menu-toggle {
+        /* You can add additional styles for the hamburger menu here if needed */
+        justify-content: center; /* Center the hamburger */
+        align-items: center; /* Center the hamburger */
+    }
+}
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.et-hero-tabs {
+    padding: 10px 0;
+}
+
+.menu-toggle {
+    display: none; /* By default, hidden */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 25px;
+    background-color: #333;
+    margin: 3px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .et-hero-tabs-container {
+        display: none; /* Hide original tabs */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .et-hero-tabs-container.active {
+        display: flex; /* Show tabs when active */
+    }
+
+    .menu-toggle {
+        display: flex; /* Show hamburger menu */
+    }
+}
+
 /* Navbar */
 .navbar {
     background-color: #2E7D32; /* Green Forest */
@@ -444,8 +574,6 @@ a {
     display: block; /* Show when 'show' class is added */
 }
 
-
-
 </style>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
@@ -472,5 +600,16 @@ a {
             dropdownMenu.classList.remove('show'); // Hide dropdown
         });
     });
+
+
+    const mobileMenu = document.getElementById('mobile-menu');
+    const tabsContainer = document.querySelector('.et-hero-tabs-container');
+    const mobileMenuList = document.getElementById('mobile-menu-list');
+
+    mobileMenu.addEventListener('click', () => {
+        tabsContainer.classList.toggle('active');
+        mobileMenuList.classList.toggle('active'); // Toggle mobile menu
+    });
+
 
 </script>

@@ -1,188 +1,210 @@
 <!-- Footer Section -->
 <footer class="footer mt-5">
-    <div class="container text-center">
-        <div class="row justify-content-between">
-            <!-- Contact Info Card -->
-            <div class="col-md-6">
-                <div class="card text-center mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Contact Information</h5>
-                        <p class="card-text">
-                            <i class="fas fa-phone-alt"></i> Phone: +92 320-7074209<br>
-                            <i class="fas fa-envelope"></i> Email: <a href="mailto:amandfati222@gmail.com">art-root-academy@gmail.com</a>
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Our Mission</h5>
-                        <p class="card-text">
-                            Our mission is to provide an inspiring and supportive environment where creativity can flourish.
-                            Through expert guidance, hands-on practice, and a passion for the arts, we cultivate a community of artists rooted in their unique expression.
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Logo and Social Icons Card -->
-            <div class="col-md-6">
-                <div class="card text-center mb-3">
-                    <div class="card-body">
-                        <img src="/static/images/navlogo.png" alt="Logo" class="footer-logo mb-3">
-                    </div>
-                    <footer>
-                      <div class="footer-content row">
-                          <div class="col-6">
-                            <p>To view your application, please enter your <strong><br>Full Name</strong> and <strong>Email</strong><br> on the View Application page.</p>
-                            <a href="{{ url_for('view_application') }}">
-                              <i class="fa-solid fa-magnifying-glass"></i> View Application</a>
-                          </div>
-                          <div class="col-6" style="text-alig">
-                            <p>It'll lead you to the <strong><br>EMAIL BOX</strong></p>
-                            <a href="mailto:amandfati222@gmail.com"><i class="fas fa-envelope"></i>   EMAIL</a>
-                          </div>
-                      </div>
-                  </footer>
-
-                  <style>
-                      /* Footer styles */
-                      footer {
-                          background-color: rgba(0, 0, 0, 0.8);
-                          color: #fff;
-                          padding: 20px;
-                          text-align: center;
-                          position: relative;
-                      }
-
-                      .footer-content {
-                          max-width: 800px;
-                          margin: auto;
-                          height: 50%;
-                      }
-
-                      a {
-                          color: #fbc02d; /* Mustard Yellow */
-                          text-decoration: none;
-                      }
-
-                      a:hover {
-                          text-decoration: underline;
-                      }
-                  </style>
-
-                </div>
-            </div>
+  <div class="container text-center">
+    <div class="row justify-content-between">
+      <!-- Contact Info Card -->
+      <div class="col-md-6">
+        <div class="card text-center mb-3">
+          <div class="card-body">
+            <h5 class="card-title">Contact Information</h5>
+            <p class="card-text">
+              <i class="fas fa-phone-alt"></i> Phone: +92 320-7074209<br />
+              <i class="fas fa-envelope"></i> Email:
+              <a href="mailto:amandfati222@gmail.com"
+                >art-root-academy@gmail.com</a
+              >
+            </p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Our Mission</h5>
+            <p class="card-text">
+              Our mission is to provide an inspiring and supportive environment
+              where creativity can flourish. Through expert guidance, hands-on
+              practice, and a passion for the arts, we cultivate a community of
+              artists rooted in their unique expression.
+            </p>
+          </div>
         </div>
-        <div class="text-center">
-            <p class="mb-0" style="color: var(--text-light-color);">&copy; 2024 Art Roots Academy | All rights reserved.</p>
+      </div>
+
+      <!-- Logo and Social Icons Card -->
+      <div class="col-md-6">
+        <div class="card text-center mb-3">
+          <div class="card-body">
+            <img
+              src="/static/images/navlogo.png"
+              alt="Logo"
+              class="footer-logo mb-3"
+            />
+          </div>
+          <footer>
+            <div class="footer-content row">
+              <div class="col-6">
+                <p>
+                  To view your application, please enter your
+                  <strong><br />Full Name</strong> and <strong>Email</strong
+                  ><br />
+                  on the View Application page.
+                </p>
+                <a href="{{ url_for('view_application') }}">
+                  <i class="fa-solid fa-magnifying-glass"></i> View
+                  Application</a
+                >
+              </div>
+              <div class="col-6" style="text-alig">
+                <p>
+                  It'll lead you to the <strong><br />EMAIL BOX</strong>
+                </p>
+                <a href="mailto:amandfati222@gmail.com"
+                  ><i class="fas fa-envelope"></i> EMAIL</a
+                >
+              </div>
+            </div>
+          </footer>
         </div>
+      </div>
     </div>
+    <div class="text-center">
+      <p class="mb-0" style="color: var(--text-light-color)">
+        &copy; 2024 Art Roots Academy | All rights reserved.
+      </p>
+    </div>
+  </div>
 </footer>
 <style media="screen">
-:root {
-  --primary-color: #2E7D32; /* Deep Forest Green */
-  --secondary-color: #E57373; /* Rich Terracotta */
-  --accent-color: #FBC02D; /* Mustard Yellow */
-  --neutral-base: #F5F5DC; /* Warm Beige */
-  --text-color: #333;
-  --text-light-color: #FFF;
-}
+  :root {
+    --primary-color: #2e7d32; /* Deep Forest Green */
+    --secondary-color: #e57373; /* Rich Terracotta */
+    --accent-color: #fbc02d; /* Mustard Yellow */
+    --neutral-base: #f5f5dc; /* Warm Beige */
+    --text-color: #333;
+    --text-light-color: #fff;
+  }
 
-/* Footer Styling */
-.footer {
-  padding: 20px 0; /* Adjusted footer height */
-  background-image: url('https://cdn.pixabay.com/photo/2019/10/30/14/51/autumn-4589724_1280.jpg'); /* Background image */
-  background-size: cover; /* Cover the entire footer */
-  background-position: center; /* Center the image */
-  border-top: 5px solid var(--accent-color);
-  border-radius: 10px;
-  color: var(--text-light-color); /* Change text color to ensure visibility */
-  text-align: center; /* Center the text */
-}
-
-.footer-logo {
-  max-width: 200px; /* Logo size */
-}
-
-.social-icons {
-  margin: 10px 0; /* Space around social icons */
-}
-
-.social-icon {
-  margin: 0 15px; /* Adjusted spacing for social icons */
-  color: var(--accent-color); /* Mustard Yellow */
-  transition: color 0.3s ease;
-  font-size: 1.5rem; /* Increase icon size */
-}
-
-.social-icon:hover {
-  color: var(--primary-color); /* Forest Green hover effect */
-}
-
-.btn-contact {
-  background-color: var(--accent-color); /* Mustard Yellow button */
-  border: none; /* Remove border */
-  color: var(--primary-color); /* Dark text color */
-  padding: 10px 20px; /* Padding for button */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 1.0rem; /* Increased font size */
-  margin-top: 10px; /* Space above button */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
-}
-
-.btn-contact:hover {
-  background-color: var(--primary-color); /* Deep Forest Green on hover */
-  color: var(--neutral-base); /* Light text on hover */
-  transform: scale(1.05); /* Scale effect on hover */
-}
-
-/* Card styling for footer */
-.card {
-  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background for card */
-  border: none; /* Remove card border */
-  border-radius: 10px; /* Rounded corners for card */
-  width: 500px;
-  height: 400px;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
+  /* Footer Styling */
   .footer {
-    padding: 15px 10px; /* Adjust padding for smaller screens */
+    padding: 20px 0; /* Adjusted footer height */
+    background-image: url("https://cdn.pixabay.com/photo/2019/10/30/14/51/autumn-4589724_1280.jpg"); /* Background image */
+    background-size: cover; /* Cover the entire footer */
+    background-position: center; /* Center the image */
+    border-top: 5px solid var(--accent-color);
+    border-radius: 10px;
+    color: var(--text-light-color); /* Change text color to ensure visibility */
+    text-align: center; /* Center the text */
   }
 
   .footer-logo {
-    max-width: 150px; /* Smaller logo size */
+    max-width: 200px; /* Logo size */
+  }
+
+  .social-icons {
+    margin: 10px 0; /* Space around social icons */
   }
 
   .social-icon {
-    font-size: 1.2rem; /* Decrease social icon size */
-    margin: 0 10px; /* Less margin on smaller screens */
+    margin: 0 15px; /* Adjusted spacing for social icons */
+    color: var(--accent-color); /* Mustard Yellow */
+    transition: color 0.3s ease;
+    font-size: 1.5rem; /* Increase icon size */
+  }
+
+  .social-icon:hover {
+    color: var(--primary-color); /* Forest Green hover effect */
   }
 
   .btn-contact {
-    font-size: 0.9rem; /* Smaller font size for buttons */
-    padding: 8px 16px; /* Smaller padding for buttons */
+    background-color: var(--accent-color); /* Mustard Yellow button */
+    border: none; /* Remove border */
+    color: var(--primary-color); /* Dark text color */
+    padding: 10px 20px; /* Padding for button */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Increased font size */
+    margin-top: 10px; /* Space above button */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
   }
 
+  .btn-contact:hover {
+    background-color: var(--primary-color); /* Deep Forest Green on hover */
+    color: var(--neutral-base); /* Light text on hover */
+    transform: scale(1.05); /* Scale effect on hover */
+  }
+
+  /* Card styling for footer */
   .card {
-    width: 90%; /* Full width on smaller screens */
-    margin: 0 auto; /* Center the card */
-  }
-}
-
-@media (max-width: 480px) {
-  .footer {
-    text-align: center; /* Center text for very small screens */
-  }
-
-  .social-icon {
-    font-size: 1.5rem; /* Increase icon size slightly for visibility */
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.8
+    ); /* Slightly transparent background for card */
+    border: none; /* Remove card border */
+    border-radius: 10px; /* Rounded corners for card */
+    width: 500px;
+    height: 400px;
   }
 
-  .btn-contact {
-    width: 100%; /* Full width button for very small screens */
-  }
-}
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .footer {
+      padding: 15px 10px; /* Adjust padding for smaller screens */
+    }
 
+    .footer-logo {
+      max-width: 150px; /* Smaller logo size */
+    }
+
+    .social-icon {
+      font-size: 1.2rem; /* Decrease social icon size */
+      margin: 0 10px; /* Less margin on smaller screens */
+    }
+
+    .btn-contact {
+      font-size: 0.9rem; /* Smaller font size for buttons */
+      padding: 8px 16px; /* Smaller padding for buttons */
+    }
+
+    .card {
+      width: 90%; /* Full width on smaller screens */
+      margin: 0 auto; /* Center the card */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer {
+      text-align: center; /* Center text for very small screens */
+    }
+
+    .social-icon {
+      font-size: 1.5rem; /* Increase icon size slightly for visibility */
+    }
+
+    .btn-contact {
+      width: 100%; /* Full width button for very small screens */
+    }
+  }
+
+  /* Footer styles */
+  footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  .footer-content {
+    max-width: 800px;
+    margin: auto;
+    height: 50%;
+  }
+
+  a {
+    color: #fbc02d; /* Mustard Yellow */
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 </style>

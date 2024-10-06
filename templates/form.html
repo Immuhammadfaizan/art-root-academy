@@ -6,258 +6,183 @@
     <title>Registration Form</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-    body {
-      background-image: url('/static/images/logosec.jpg'); /* پس منظر کی تصویر کا URL یہاں شامل کریں */
-      background-size: cover;
-      background-position: left;
-      color: #2E7D32; /* Deep Forest Green for text */
-      }
-
-      h2 {
-        font-weight: bold;
-      }
-
-      h4 {
-        color: #F5F5DC;
-        font-size: 1rem;
-        font-weight: bold;
-      }
-
-    .container {
-        margin-top: 100px;
-        margin-bottom: 100px;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.5); /* سیاہ شفاف پس منظر */
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* تھوڑا زیادہ سایہ */
-        width: 80%; /* کنٹینر کی چوڑائی کو کم کرنا */
-        max-width: 600px; /* زیادہ سے زیادہ چوڑائی مقرر کرنا */
-        margin-left: auto; /* سینٹر میں رکھنے کے لیے */
-        margin-right: auto; /* سینٹر میں رکھنے کے لیے */
-      }
-
-      .course-container {
-        margin-top: 100px;
-        margin-bottom: 40px;
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.7); /* سیاہ شفاف پس منظر */
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* تھوڑا زیادہ سایہ */
-        width: 80%;
-        max-width: 600px; /* زیادہ سے زیادہ چوڑائی مقرر کرنا */
-        margin-left: auto; /* سینٹر میں رکھنے کے لیے */
-        margin-right: auto;
-        overflow: auto;
-      }
-
-    .btn-primary {
-      background-color: #FBC02D; /* Mustard Yellow */
-      border: none;
-      font-size: 1rem;
-      font-style:
-    }
-
-    .btn-primary-register {
-      background-color: #FBC02D; /* Mustard Yellow */
-      border-radius: 20px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: white;
-      width: 70%;
-      height: 50px;
-    }
-
-    .btn-primary:hover {
-      background-color: #E57373;
-      }
-
-    .btn-primary-register:hover {
-      background-color: #E57373;
-      color: white;
-      font-style: italic;
-      }
-
-    .form-control:focus {
-      border-color: #fbc02d; /* Mustard Yellow */
-      box-shadow: 0 0 8px rgba(251, 192, 45, 0.5);
-      }
-
-    .form-group label {
-      color: #F5F5DC;
-      font-size: 1.0rem;
-      }
-
-    .courses-container {
-      display: none; /* Start hidden */
-      transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Animation */
-      max-height: 0; /* Set initial max-height to 0 for animation */
-      overflow: hidden; /* Hide overflow */
-      opacity: 0; /* Start with 0 opacity */
-      }
-
-    .courses-container.show {
-      display: block; /* Show when active */
-      max-height: 400px; /* Set max-height when shown */
-      opacity: 1; /* Fade in */
-      }
-
-      button {
-        font-size: 1rem;
-      }
-
-      /* Style for the alert message container */
-      .alert-dismissible {
-          background-color: rgba(255, 255, 255, 0.8); /* White background with transparency */
-          border-radius: 8px; /* Rounded corners */
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-          padding: 15px;
-          margin-bottom: 20px;
-          border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
-          max-width: 600px; /* Limit the width of the alert */
-          margin-left: auto;
-          margin-right: auto; /* Center the alert box */
-      }
-
-      /* Style for the alert message container */
-    .alert-dismissible {
-        position: relative;
-        background-color: rgba(255, 255, 255, 0.4); /* White background with transparency */
-        border-radius: 8px; /* Rounded corners */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
-        max-width: 600px; /* Limit the width of the alert */
-        margin-left: auto;
-        margin-right: auto; /* Center the alert box */
-        opacity: 0; /* Initial hidden state */
-        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Fade-in and slide-in */
-        transform: translateY(-20px); /* Slide from above */
-    }
-
-    /* Ensure that alerts with the "show" class are visible */
-    .alert-dismissible.fade.show {
-        opacity: 1; /* Fully visible */
-        transform: translateY(0); /* No sliding */
-    }
-
-    /* Style for individual alert messages */
-    .alert {
-        color: #2E7D32; /* Deep Forest Green text for success messages */
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        font-size: 1.0rem;
-        color: white;
-        font-weight: bold;
-    }
-
-    /* Adjust alert styles based on categories */
-    .alert-success {
-        background-color: rgba(46, 125, 50, 0.1); /* Light green for success background */
-        font-size: 1.0rem;
-        color: white;
-        font-weight: bold;
-    }
-
-    .alert-error {
-        background-color: rgba(229, 115, 115, 0.1); /* Light red for error background */
-        font-size: 1.0rem;
-        color: white;
-        font-weight: bold;
-    }
-
-    .btn-primary, .btn-primary-register {
-        background-color: #FBC02D; /* Mustard Yellow */
-        border: none;
-        border-radius: 8px; /* Rounded corners */
-        font-size: 1rem; /* Slightly larger font size */
-        color: white;
-        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-    }
-
-    .btn-primary:hover, .btn-primary-register:hover {
-        background-color: #E57373; /* Hover color change */
-        transform: translateY(-3px); /* Slight upward movement on hover */
-    }
-
-    /* Form Control Styles */
-    .form-control:focus {
-        border-color: #FBC02D; /* Mustard Yellow */
-        box-shadow: 0 0 8px rgba(251, 192, 45, 0.5); /* Highlight effect */
-    }
-
-    /* Form Group Label */
-    .form-group label {
-        color: #F5F5DC; /* Label color */
-        font-size: 1.0rem;
-    }
-
-    /* Courses Container Animation */
-    .courses-container {
-        display: none; /* Start hidden */
-        transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Animation */
-        max-height: 0; /* Set initial max-height to 0 for animation */
-        overflow: hidden; /* Hide overflow */
-        opacity: 0; /* Start with 0 opacity */
-    }
-
-    .courses-container.show {
-        display: block; /* Show when active */
-        max-height: 400px; /* Set max-height when shown */
-        opacity: 1; /* Fade in */
-    }
-
-    /* Alert Message Styles */
-    .alert-dismissible {
-        background-color: rgba(255, 255, 255, 0.6); /* White background with transparency */
-        border-radius: 8px; /* Rounded corners */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
-        max-width: 600px; /* Limit the width of the alert */
-        margin-left: auto;
-        margin-right: auto; /* Center the alert box */
-        opacity: 0; /* Initial hidden state */
-        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Fade-in and slide-in */
-        transform: translateY(-20px); /* Slide from above */
-    }
-
-    .alert-dismissible.fade.show {
-        opacity: 1; /* Fully visible */
-        transform: translateY(0); /* No sliding */
-    }
-
-    .alert {
-        color: #2E7D32; /* Deep Forest Green text for success messages */
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        font-size: 1.0rem;
-        color: white;
-        font-weight: bold;
-    }
-
-    .alert-success {
-        background-color: rgba(46, 125, 50, 0.8); /* Light green for success background */
-    }
-
-    .alert-error {
-        background-color: rgba(229, 115, 115, 0.8); /* Light red for error background */
-    }
-
-    /* Keyframe Animation */
-    @keyframes slide-in {
-        0% {
-            transform: translateY(-50px);
-            opacity: 0;
+        /* General Body Styles */
+        body {
+            background-image: url('/static/images/logosec.jpg'); /* پس منظر کی تصویر کا URL یہاں شامل کریں */
+            background-size: cover;
+            background-position: left;
+            color: #2E7D32; /* Deep Forest Green for text */
         }
-        100% {
-            transform: translateY(0);
-            opacity: 1;
+        
+        /* Headings */
+        h2 {
+            font-weight: bold;
         }
-    }
+        
+        h4 {
+            color: #F5F5DC;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        
+        /* Container Styles */
+        .container,
+        .course-container {
+            margin: 100px auto 40px; /* Centering the container */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* سیاہ شفاف پس منظر */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* تھوڑا زیادہ سایہ */
+            width: 90%; /* Responsive width */
+            max-width: 600px; /* زیادہ سے زیادہ چوڑائی مقرر کرنا */
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background-color: #FBC02D; /* Mustard Yellow */
+            border: none;
+            border-radius: 8px; /* Rounded corners */
+            color: white;
+            font-size: 1rem; /* Slightly larger font size */
+            width: 100%; /* Full width on mobile */
+            height: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */   
+        }
+
+        .btn-primary-register {
+            background-color: #FBC02D; /* Mustard Yellow */
+            border: none;
+            border-radius: 8px; /* Rounded corners */
+            color: white;
+            font-size: 1rem; /* Slightly larger font size */
+            width: 100%; /* Full width on mobile */
+            height: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+        }
+        
+        .btn-primary:hover,
+        .btn-primary-register:hover {
+            background-color: #E57373; /* Hover color change */
+            transform: translateY(-3px); /* Slight upward movement on hover */
+        }
+        
+        /* Form Control Styles */
+        .form-control:focus {
+            border-color: #FBC02D; /* Mustard Yellow */
+            box-shadow: 0 0 8px rgba(251, 192, 45, 0.5); /* Highlight effect */
+        }
+        
+        /* Form Group Label */
+        .form-group label {
+            color: #F5F5DC; /* Label color */
+            font-size: 1.0rem;
+        }
+        
+        /* Courses Container Animation */
+        .courses-container {
+            display: none; /* Start hidden */
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Animation */
+            max-height: 0; /* Set initial max-height to 0 for animation */
+            overflow: hidden; /* Hide overflow */
+            opacity: 0; /* Start with 0 opacity */
+        }
+        
+        .courses-container.show {
+            display: block; /* Show when active */
+            max-height: 400px; /* Set max-height when shown */
+            opacity: 1; /* Fade in */
+        }
+        
+        /* Alert Message Styles */
+        .alert-dismissible {
+            background-color: rgba(255, 255, 255, 0.6); /* White background with transparency */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            padding: 15px;
+            margin: 20px auto; /* Center the alert box */
+            max-width: 600px; /* Limit the width of the alert */
+            opacity: 0; /* Initial hidden state */
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Fade-in and slide-in */
+            transform: translateY(-20px); /* Slide from above */
+        }
+        
+        .alert-dismissible.fade.show {
+            opacity: 1; /* Fully visible */
+            transform: translateY(0); /* No sliding */
+        }
+        
+        /* Individual Alert Messages */
+        .alert {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 1.0rem;
+            font-weight: bold;
+        }
+        
+        .alert-success {
+            background-color: rgba(46, 125, 50, 0.8); /* Light green for success background */
+            color: white; /* Text color */
+        }
+        
+        .alert-error {
+            background-color: rgba(229, 115, 115, 0.8); /* Light red for error background */
+            color: white; /* Text color */
+        }
+        
+        /* Keyframe Animation */
+        @keyframes slide-in {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .container,
+            .course-container {
+                width: 95%; /* Adjust width for smaller screens */
+                padding: 15px; /* Less padding */
+            }
+        
+            h2 {
+                font-size: 1.5rem; /* Adjust heading size */
+            }
+        
+            h4 {
+                font-size: 0.9rem; /* Adjust heading size */
+            }
+        
+            .btn-primary,
+            .btn-primary-register {
+                font-size: 0.9rem; /* Smaller font size on mobile */
+            }
+        
+            .form-group label {
+                font-size: 0.9rem; /* Smaller font size on mobile */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.2rem; /* Further adjust heading size */
+            }
+        
+            h4 {
+                font-size: 0.8rem; /* Further adjust heading size */
+            }
+        
+            .btn-primary,
+            .btn-primary-register {
+                font-size: 0.8rem; /* Further smaller font size on mobile */
+            }
+        }
+        
 
     </style>
 </head>
@@ -318,9 +243,9 @@
       <!-- Course Category Buttons -->
       <div id="course_category" required>
           <input type="hidden" name="course_category" id="selected_course_category">
-          <button name="course_category" type="button" class="btn btn-primary category-button" data-category="graphic-design">Graphic Design</button>
-          <button name="course_category" type="button" class="btn btn-primary category-button" data-category="art-calligraphy">Art & Calligraphy</button>
-          <button name="course_category" type="button" class="btn btn-primary category-button" data-category="development">Development</button>
+          <button name="course_category" type="button" class="btn btn-primary category-button mt-3 mb-2" data-category="graphic-design">Graphic Design</button>
+          <button name="course_category" type="button" class="btn btn-primary category-button mt-2 mb-2" data-category="art-calligraphy">Art & Calligraphy</button>
+          <button name="course_category" type="button" class="btn btn-primary category-button mt-2 mb-2" data-category="development">Development</button>
       </div>
 
       <!-- Courses in Graphic Design -->
