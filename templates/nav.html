@@ -20,7 +20,7 @@
               <div class="contact-item">
                   <p class="mb-1 fw-bold">Contact via Email</p>
                   <a href="mailto:amandfati222@gmail.com?subject=Information%20About%20the%20Course(s)" class="email">
-                      <i class="fa-solid fa-envelope me-2"></i> art-root-academy@gmail.com
+                      <i class="fa-solid fa-envelope me-2"></i> art-n-tech-academy@gmail.com
                   </a>
               </div>
           </div>
@@ -54,10 +54,10 @@
         <!-- Mobile Menu for Small Screens -->
         <div class="mobile-menu" id="mobile-menu-list">
             <a class="et-hero-tab" href="/">Home</a>
-            <a class="et-hero-tab dropdown-toggle" href="" id="coursesDropdownMobile" role="button" aria-expanded="false" onclick="toggleDropdown(event)">
+            <a class="et-hero-tab dropdown-toggle" href="/#courses" id="coursesDropdownMobile" role="button" aria-expanded="false" onclick="toggleDropdown(event)">
                 Courses
             </a>
-            <ul class="dropdown-menu" aria-labelledby="coursesDropdownMobile">
+            <ul class="dropdown-menu" aria-labelledby="coursesDropdown">
                 <li><a class="dropdown-item" href="#designing">Designing Courses</a></li>
                 <li><a class="dropdown-item" href="#art">Art and Calligraphy Courses</a></li>
                 <li><a class="dropdown-item" href="#development">Development Courses</a></li>
@@ -72,7 +72,7 @@
 <!-- Banner Container -->
 <div class="banner-container">
     <div class="greeting">
-        <h1 class="banner-text">Welcome to Art Root Academy!</h1>
+        <h1 class="banner-text">Welcome to Art & Tech Academy!</h1>
         <p>Discover your artistic potential.</p>
       </div>
 </div>
@@ -352,10 +352,39 @@ i {
     text-align: center;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-info {
+        padding: 10px; /* Reduced padding for smaller screens */
+    }
+
+    .phone, .email {
+        font-size: 1rem; /* Smaller font size */
+    }
+
+    .background-section {
+        height: 150px; /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info {
+        padding: 8px; /* Further reduced padding for mobile */
+    }
+
+    .phone, .email {
+        font-size: 0.9rem; /* Smaller font size for mobile */
+    }
+
+    .background-section {
+        height: 120px; /* Further adjusted height */
+    }
+}
+
 /* Add an overlay for the opacity effect */
 
 .background-section::before {
-    content: "ART ROOT ACADEMY";
+    content: "ART & TECH ACADEMY";
     position: absolute;
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
@@ -363,7 +392,7 @@ i {
     width: auto; /* Adjust width */
     height: auto; /* Adjust height */
     z-index: 1; /* Ensures the overlay is behind the content */
-    font-size: 3.8rem; /* Font size */
+    font-size: 3.6rem; /* Font size */
     color: #FBC02D; /* Text color */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds shadow for better visibility */
     letter-spacing: 2px; /* Spacing between letters */
