@@ -261,7 +261,6 @@ def view_image(filename):
     except FileNotFoundError:
         abort(404)
 
-if __name__ == "__main__":
-    # Render sets a PORT environment variable, so we use that here
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
+    
