@@ -10,7 +10,7 @@ DB_PASSWORD = os.environ['DB_PASSWORD']
 DB_HOSTNAME = os.environ['DB_HOSTNAME']
 DB_NAME = os.environ['DB_NAME']
 
-engine_url = f'mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOSTNAME}/{DB_NAME}?charset=utf8mb4'
+engine_url = f'postgresql+psycopg2://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOSTNAME}/{DB_NAME}'
 engine = create_engine(engine_url)
 
 # Initialize Flask app
