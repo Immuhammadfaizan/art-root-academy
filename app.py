@@ -4,8 +4,6 @@ from sqlalchemy import text, create_engine
 import os
 import uuid
 
-DATABASE_URL = os.environ['DATABASE_URL']
-
 # Database configuration
 DB_USERNAME = os.environ['DB_USERNAME']
 DB_PASSWORD = os.environ['DB_PASSWORD']
