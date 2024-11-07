@@ -11,7 +11,7 @@ CREATE TABLE registrations (
     experience VARCHAR(3),
     experience_details TEXT,
     payment_method VARCHAR(50) NOT NULL,
-    agree ENUM('Agree', 'Disagree') NOT NULL,
+   agree BOOLEAN NOT NULL DEFAULT FALSE, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
