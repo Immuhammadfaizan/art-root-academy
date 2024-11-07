@@ -92,7 +92,7 @@ def register():
         courses_str = ','.join(courses) if courses else None
 
         # Check if mandatory fields are filled
-        if not all([full_name, email, phone, agree]):
+        if not all([full_name, dob, email, phone, contact_method, course_category, courses_str, payment_method, agree]):
             flash("All fields are required!", 'error')
             return redirect(url_for('register'))
 
