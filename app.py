@@ -86,7 +86,7 @@ def register():
         prior_experience = request.form.get('prior_experience')
         experience_details = request.form.get('experience_details') if prior_experience == 'YES' else None
         payment_method = request.form.get('payment_method')
-        agree = request.form.get('agree')
+        agree = request.form.get('agree') = 'on'
 
         # Ensure courses is not empty, set it to None if no course is selected
         courses_str = ','.join(courses) if courses else None
