@@ -8,10 +8,10 @@ CREATE TABLE registrations (
     course_category VARCHAR(50) NOT NULL,
     course VARCHAR(255) NOT NULL,
     referral VARCHAR(255),
-    experience VARCHAR(3), -- You might want to set a more appropriate size for experience values like 'Yes', 'No'
+    experience VARCHAR(3),
     experience_details TEXT,
     payment_method VARCHAR(50) NOT NULL,
-    agree BOOLEAN NOT NULL CHECK (agree IN (TRUE, FALSE)),
+    agree ENUM('Agree', 'Disagree') NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
