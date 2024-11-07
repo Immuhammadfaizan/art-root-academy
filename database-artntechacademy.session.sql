@@ -11,9 +11,13 @@ CREATE TABLE registrations (
     experience VARCHAR(3),
     experience_details TEXT,
     payment_method VARCHAR(50) NOT NULL,
-   agree BOOLEAN NOT NULL DEFAULT FALSE, 
+    agree BOOLEAN NOT NULL DEFAULT FALSE, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+ALTER TABLE registrations 
+ALTER COLUMN agree TYPE BOOLEAN 
+USING (agree = 'Agree');
 
 CREATE TABLE payments (
     id SERIAL PRIMARY KEY,
