@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 from sqlalchemy import text, create_engine
 import os
 import uuid
+from flask_mail import Mail, Message  # Import Flask-Mail for email functionality
 
 # Database configuration
 DB_USERNAME = os.environ['DB_USERNAME']
@@ -18,6 +19,16 @@ app = Flask(__name__)
 app.secret_key = str(uuid.uuid4())
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Max file size 16MB
+
+# Configure Flask-Mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Gmail SMTP server
+app.config['MAIL_PORT'] = 587  # SMTP port for TLS
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.environ.get('EMAIL_USER')  # Your email address
+app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASS')  # Your email password or app-specific password
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('EMAIL_USER')  # Email sender
+
+mail = Mail(app)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
@@ -89,7 +100,7 @@ def register():
             with engine.connect() as conn:
                 trans = conn.begin()
 
-                query = text("""
+                query = text(""" 
                     INSERT INTO registrations 
                     (full_name, dob, email, phone, contact_method, course_category, course, referral, 
                      experience, experience_details, payment_method, agree) 
@@ -115,6 +126,10 @@ def register():
                 })
 
                 trans.commit()
+
+                # Send notification email after successful registration
+                send_notification_email(full_name, email)
+
                 flash("Registration successful!", "success")
                 return redirect(url_for('home'))
 
@@ -123,6 +138,18 @@ def register():
             return redirect(url_for('register'))
 
     return render_template('form.html')
+
+# Function to send email notification
+def send_notification_email(full_name, email):
+    try:
+        msg = Message(
+            subject="New Registration - Art Roots Academy",
+            recipients=["muahmmadfaizanlite@gmail.com"],  # Notification email address
+            body=f"New registration received:\n\nFull Name: {full_name}\nEmail: {email}\n",
+        )
+        mail.send(msg)
+    except Exception as e:
+        print(f"Error sending email: {str(e)}")
 
 # View Application
 @app.route('/view_application', methods=['POST', 'GET'])
@@ -133,9 +160,9 @@ def view_application():
 
         try:
             with engine.connect() as conn:
-                query = text("""
+                query = text(""" 
                     SELECT * FROM registrations 
-                    WHERE full_name = :full_name AND email = :email
+                    WHERE full_name = :full_name AND email = :email 
                 """)
 
                 result = conn.execute(query, {"full_name": full_name, "email": email}).fetchone()
@@ -173,7 +200,7 @@ def payment():
     return render_template('payment.html')  # Display payment form
 
 def allowed_file(filename):
-    """Check if the file has an allowed extension."""
+    """Check if the file has an allowed extension.""" 
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/submit_payment', methods=['POST'])
@@ -210,9 +237,9 @@ def submit_payment():
     try:
         with engine.connect() as conn:
             trans = conn.begin()
-            query = text("""
+            query = text(""" 
                 INSERT INTO payments (name, email, payment_method, receipt_path)
-                VALUES (:name, :email, :payment_method, :receipt_path)
+                VALUES (:name, :email, :payment_method, :receipt_path) 
             """)
             conn.execute(query, {
                 "name": name,
@@ -222,10 +249,10 @@ def submit_payment():
             })
             trans.commit()
             flash("Payment details submitted successfully! Now move back to the REGISTRATIONS page to submit your complete application.", "success")
-            return redirect(url_for('payment'))
+            return redirect(url_for('home'))
 
     except Exception as e:
-        flash(f"An error occurred: {str(e)}", "error")
+        flash(f"An error occurred while processing payment: {str(e)}", "error")
         return redirect(url_for('payment'))
 
 @app.route('/admin', methods=['GET'])
