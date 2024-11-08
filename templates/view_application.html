@@ -35,6 +35,52 @@
         {% endif %}
     </div>
 
+    <script>
+        document.getElementById('application-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from submitting traditionally
+
+            // Get form data
+            const formData = new FormData(this);
+
+            // Send an AJAX request
+            fetch('/view_application', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    // Show error message
+                    document.getElementById('error-message').textContent = data.error;
+                    document.getElementById('application-details').style.display = 'none';
+                } else {
+                    // Populate the application details section
+                    document.getElementById('app-name').textContent = data.full_name;
+                    document.getElementById('app-dob').textContent = data.dob;
+                    document.getElementById('app-email').textContent = data.email;
+                    document.getElementById('app-phone').textContent = data.phone;
+                    document.getElementById('app-contact-method').textContent = data.contact_method;
+                    document.getElementById('app-course-category').textContent = data.course_category;
+                    document.getElementById('app-course').textContent = data.course;
+                    document.getElementById('app-referral').textContent = data.referral;
+                    document.getElementById('app-experience').textContent = data.experience;
+                    document.getElementById('app-experience-details').textContent = data.experience_details;
+                    document.getElementById('app-payment-method').textContent = data.payment_method;
+                    document.getElementById('app-agree').textContent = data.agree;
+                    document.getElementById('app-created-at').textContent = data.created_at;
+
+                    // Display the details
+                    document.getElementById('application-details').style.display = 'block';
+                    document.getElementById('error-message').textContent = '';
+                }
+            })
+            .catch(error => {
+                document.getElementById('error-message').textContent = "An error occurred. Please try again.";
+                document.getElementById('application-details').style.display = 'none';
+            });
+        });
+    </script>
+
     <style>
     /* CSS Styles */
     @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");

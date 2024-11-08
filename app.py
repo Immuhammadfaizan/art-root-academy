@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, request, send_from_directory, abort
+from flask import Flask, render_template, redirect, url_for, flash, request, send_from_directory, abort, jsonify
 from werkzeug.utils import secure_filename
 from sqlalchemy import text, create_engine
 import os
@@ -24,9 +24,9 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # Max file size 16MB
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Gmail SMTP server
 app.config['MAIL_PORT'] = 587  # SMTP port for TLS
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('EMAIL_USER')  # Your email address
-app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASS')  # Your email password or app-specific password
-app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('EMAIL_USER')  # Email sender
+app.config['MAIL_USERNAME'] = os.getenv("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASSWORD")
+app.config['MAIL_DEBUG'] = True
 
 mail = Mail(app)
 
@@ -86,7 +86,7 @@ def register():
         prior_experience = request.form.get('prior_experience')
         experience_details = request.form.get('experience_details') if prior_experience == 'YES' else None
         payment_method = request.form.get('payment_method')
-        agree = request.form.get('agree') == 'on' # convert it to boolean
+        agree = request.form.get('agree') == 'on'  # convert it to boolean
 
         # Ensure courses is not empty, set it to None if no course is selected
         courses_str = ','.join(courses) if courses else None
@@ -128,7 +128,7 @@ def register():
                 trans.commit()
 
                 # Send notification email after successful registration
-                send_notification_email(query)
+                send_notification_email(full_name, email, phone, courses_str, payment_method, contact_method)
 
                 flash("Registration successful!", "success")
                 return redirect(url_for('home'))
@@ -140,20 +140,20 @@ def register():
     return render_template('form.html')
 
 # Function to send email notification
-def send_notification_email(query):
+def send_notification_email(full_name, email, phone, courses, payment_method, contact_method):
     try:
         msg = Message(
             subject="New Registration - Art Roots Academy",
-            recipients=["muahmmadfaizanlite@gmail.com"],  # Notification email address
+            recipients=["amandfati222@gmail.com"],  # Client's email address; RECEIVER
         )
         msg.body = (
             f"New registration received:\n\n"
-            f"Name: {query['full_name']}\n"
-            f"Email: {query['email']}\n"
-            f"Phone: {query['phone']}\n"
-            f"Course: {query['course']}\n"
-            f"Payment Method: {query['payment_method']}\n"
-            f"Contact Method: {query['contact_method']}\n"
+            f"Name: {full_name}\n"
+            f"Email: {email}\n"
+            f"Phone: {phone}\n"
+            f"Course(s): {courses}\n"
+            f"Payment Method: {payment_method}\n"
+            f"Contact Method: {contact_method}\n"
         )
         mail.send(msg)
     except Exception as e:
@@ -193,7 +193,7 @@ def view_application():
                     }
                     return render_template('view_application.html', application=application)
                 else:
-                    flash("No application found with the provided details.", "error")
+                    jsonify("No application found with the provided details.", "error")
                     return redirect(url_for('view_application'))
 
         except Exception as e:
@@ -253,41 +253,44 @@ def submit_payment():
                 "name": name,
                 "email": email,
                 "payment_method": payment_method,
-                "receipt_path": receipt_path  # Store only the filename here
+                "receipt_path": receipt_path  # Save receipt filename in the database
             })
             trans.commit()
-            flash("Payment details submitted successfully! Now move back to the REGISTRATIONS page to submit your complete application.", "success")
+            flash("Payment submitted successfully!", "success")
             return redirect(url_for('home'))
 
     except Exception as e:
-        flash(f"An error occurred while processing payment: {str(e)}", "error")
+        flash(f"An error occurred during payment processing: {str(e)}", "error")
         return redirect(url_for('payment'))
 
 @app.route('/admin', methods=['GET'])
 def admin():
     try:
         with engine.connect() as conn:
-            # Fetch registrations
+            # Fetch registrations with 'id' included in the query
             registration_query = text("""
-                SELECT full_name, dob, email, phone, contact_method, course_category, course, referral, 
+                SELECT id, full_name, dob, email, phone, contact_method, course_category, course, referral, 
                        experience, experience_details, payment_method, agree, created_at 
                 FROM registrations
             """)
             registrations = conn.execute(registration_query).fetchall()
-            
+
             # Fetch payments
             payment_query = text("""
-                SELECT name, email, payment_method, receipt_path, created_at 
+                SELECT id, name, email, payment_method, receipt_path, created_at 
                 FROM payments
             """)
             payments = conn.execute(payment_query).fetchall()
-            
+
         # Pass the results to the template for rendering
         return render_template('view_admin.html', registrations=registrations, payments=payments)
     
     except Exception as e:
         flash(f"An error occurred while fetching admin data: {str(e)}", 'error')
+        # Log the error to the console for debugging purposes
+        print(f"Error: {str(e)}")
         return redirect(url_for('home'))
+
 
 @app.route('/view_image/<path:filename>')
 def view_image(filename):
@@ -299,17 +302,21 @@ def view_image(filename):
 @app.route('/delete_entry/<string:entry_type>/<int:entry_id>', methods=['POST'])
 def delete_entry(entry_type, entry_id):
     try:
-        with engine.connect() as conn:
+        with engine.begin() as conn:  # engine.begin() automatically commits at the end of the block
             if entry_type == 'registration':
                 query = text("DELETE FROM registrations WHERE id = :id")
             elif entry_type == 'payment':
                 query = text("DELETE FROM payments WHERE id = :id")
             else:
                 flash("Invalid entry type", "error")
-                return redirect(url_for('admin'))
+                return redirect(url_for('admin'))  # Make sure 'admin' view is correct
                 
-            conn.execute(query, {"id": entry_id})
-            flash(f"{entry_type.capitalize()} deleted successfully!", "success")
+            result = conn.execute(query, {"id": entry_id})
+            if result.rowcount > 0:
+                flash(f"{entry_type.capitalize()} entry deleted successfully!", "success")
+            else:
+                flash(f"No {entry_type} entry found with the given ID.", "error")
+                
     except Exception as e:
         flash(f"An error occurred: {str(e)}", "error")
     
