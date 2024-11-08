@@ -128,7 +128,7 @@ def register():
                 trans.commit()
 
                 # Send notification email after successful registration
-                send_notification_email(full_name, email)
+                send_notification_email(query)
 
                 flash("Registration successful!", "success")
                 return redirect(url_for('home'))
@@ -140,12 +140,20 @@ def register():
     return render_template('form.html')
 
 # Function to send email notification
-def send_notification_email(full_name, email):
+def send_notification_email(query):
     try:
         msg = Message(
             subject="New Registration - Art Roots Academy",
             recipients=["muahmmadfaizanlite@gmail.com"],  # Notification email address
-            body=f"New registration received:\n\nFull Name: {full_name}\nEmail: {email}\n",
+        )
+        msg.body = (
+            f"New registration received:\n\n"
+            f"Name: {query['full_name']}\n"
+            f"Email: {query['email']}\n"
+            f"Phone: {query['phone']}\n"
+            f"Course: {query['course']}\n"
+            f"Payment Method: {query['payment_method']}\n"
+            f"Contact Method: {query['contact_method']}\n"
         )
         mail.send(msg)
     except Exception as e:
@@ -287,6 +295,25 @@ def view_image(filename):
         return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
     except FileNotFoundError:
         abort(404)
+
+@app.route('/delete_entry/<string:entry_type>/<int:entry_id>', methods=['POST'])
+def delete_entry(entry_type, entry_id):
+    try:
+        with engine.connect() as conn:
+            if entry_type == 'registration':
+                query = text("DELETE FROM registrations WHERE id = :id")
+            elif entry_type == 'payment':
+                query = text("DELETE FROM payments WHERE id = :id")
+            else:
+                flash("Invalid entry type", "error")
+                return redirect(url_for('view_admin'))
+                
+            conn.execute(query, {"id": entry_id})
+            flash(f"{entry_type.capitalize()} deleted successfully!", "success")
+    except Exception as e:
+        flash(f"An error occurred: {str(e)}", "error")
+    
+    return redirect(url_for('admin'))
 
 if __name__ == '__main__':
     app.run(debug=True)

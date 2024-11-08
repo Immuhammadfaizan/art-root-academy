@@ -200,6 +200,7 @@ button {
             <th>Experience Details</th>
             <th>Payment Method</th>
             <th>Registration Date</th>
+            <th>Action</th> <!-- New column for Delete Button -->
           </tr>
         </thead>
         <tbody>
@@ -215,10 +216,15 @@ button {
             <td>{{ registration.experience_details or 'N/A' }}</td>
             <td>{{ registration.payment_method }}</td>
             <td>{{ registration.created_at }}</td>
+            <td>
+              <form action="{{ url_for('delete_entry', entry_type='registration', entry_id=registration.id) }}" method="post">
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </td>
           </tr>
           {% else %}
           <tr>
-            <td colspan="10" style="text-align: center;">No registrations found.</td>
+            <td colspan="11" style="text-align: center;">No registrations found.</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -237,6 +243,7 @@ button {
             <th>Payment Method</th>
             <th>Receipt</th>
             <th>Date Submitted</th>
+            <th>Action</th> <!-- New column for Delete Button -->
           </tr>
         </thead>
         <tbody>
@@ -247,20 +254,22 @@ button {
             <td>{{ payment.email }}</td>
             <td>{{ payment.payment_method }}</td>
             <td>
-              {% if payment.payment_method == 'bank_transfer' %}
-                  <a href="{{ url_for('view_image', filename=payment.receipt_path) }}" target="_blank">View Receipt</a>
-              {% elif payment.payment_method == 'jazzcash' %}
+              {% if payment.payment_method == 'bank_transfer' or payment.payment_method == 'jazzcash' %}
                   <a href="{{ url_for('view_image', filename=payment.receipt_path) }}" target="_blank">View Receipt</a>
               {% else %}
                   N/A
               {% endif %}
             </td>
-
             <td>{{ payment.created_at }}</td>
+            <td>
+              <form action="{{ url_for('delete_entry', entry_type='payment', entry_id=payment.id) }}" method="post">
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </td>
           </tr>
           {% else %}
           <tr>
-            <td colspan="6" style="text-align: center;">No payments found.</td>
+            <td colspan="7" style="text-align: center;">No payments found.</td>
           </tr>
           {% endfor %}
         </tbody>
