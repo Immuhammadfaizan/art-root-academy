@@ -200,6 +200,7 @@ button {
             <th>Experience Details</th>
             <th>Payment Method</th>
             <th>Registration Date</th>
+            <th>Agree</th> <!-- Added Agree column -->
             <th>Action</th> <!-- New column for Delete Button -->
           </tr>
         </thead>
@@ -216,6 +217,7 @@ button {
             <td>{{ registration.experience_details or 'N/A' }}</td>
             <td>{{ registration.payment_method }}</td>
             <td>{{ registration.created_at }}</td>
+            <td>{{ registration.agree | yesno:"Yes,No" }}</td> <!-- Displaying Agree field as Yes or No -->
             <td>
               <form action="{{ url_for('delete_entry', entry_type='registration', entry_id=registration.id) }}" method="post">
                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -224,7 +226,7 @@ button {
           </tr>
           {% else %}
           <tr>
-            <td colspan="11" style="text-align: center;">No registrations found.</td>
+            <td colspan="12" style="text-align: center;">No registrations found.</td>
           </tr>
           {% endfor %}
         </tbody>
