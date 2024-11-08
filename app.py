@@ -306,7 +306,7 @@ def delete_entry(entry_type, entry_id):
                 query = text("DELETE FROM payments WHERE id = :id")
             else:
                 flash("Invalid entry type", "error")
-                return redirect(url_for('view_admin'))
+                return redirect(url_for('admin'))
                 
             conn.execute(query, {"id": entry_id})
             flash(f"{entry_type.capitalize()} deleted successfully!", "success")
