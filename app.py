@@ -143,8 +143,9 @@ def register():
 def send_notification_email(full_name, email, phone, courses, payment_method, contact_method):
     try:
         msg = Message(
-            subject="New Registration - Art Roots Academy",
-            recipients=["amandfati222@gmail.com"],  # Client's email address; RECEIVER
+            subject="New Registration - Art & Tech Academy",
+            sender=email,
+            recipients=["muhammadfaizanlite@gmail.com"],  # Admin email address; RECEIVER
         )
         msg.body = (
             f"New registration received:\n\n"
