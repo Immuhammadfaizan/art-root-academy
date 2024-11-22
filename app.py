@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 from sqlalchemy import text, create_engine
 import os
 import uuid
-from flask_mail import Mail, Message  # Import Flask-Mail for email functionality
+from flask_mail import Mail, Message
 
 # Database configuration
 DB_USERNAME = os.environ['DB_USERNAME']
@@ -100,12 +100,12 @@ def register():
             with engine.connect() as conn:
                 trans = conn.begin()
 
-                query = text(""" 
-                    INSERT INTO registrations 
-                    (full_name, dob, email, phone, contact_method, course_category, course, referral, 
-                     experience, experience_details, payment_method, agree) 
+                query = text("""
+                    INSERT INTO registrations
+                    (full_name, dob, email, phone, contact_method, course_category, course, referral,
+                     experience, experience_details, payment_method, agree)
                     VALUES (
-                        :full_name, :dob, :email, :phone, :contact_method, :course_category, :courses, 
+                        :full_name, :dob, :email, :phone, :contact_method, :course_category, :courses,
                         :referral, :experience, :experience_details, :payment_method, :agree
                     )
                 """)
@@ -145,7 +145,7 @@ def send_notification_email(full_name, email, phone, courses, payment_method, co
         msg = Message(
             subject="New Registration - Art & Tech Academy",
             sender=email,
-            recipients=["muhammadfaizanlite@gmail.com"],  # Admin email address; RECEIVER
+            recipients=["amandfati222@gmail.com"],  # Admin's email address; RECEIVER
         )
         msg.body = (
             f"New registration received:\n\n"
@@ -169,9 +169,9 @@ def view_application():
 
         try:
             with engine.connect() as conn:
-                query = text(""" 
-                    SELECT * FROM registrations 
-                    WHERE full_name = :full_name AND email = :email 
+                query = text("""
+                    SELECT * FROM registrations
+                    WHERE full_name = :full_name AND email = :email
                 """)
 
                 result = conn.execute(query, {"full_name": full_name, "email": email}).fetchone()
@@ -209,7 +209,7 @@ def payment():
     return render_template('payment.html')  # Display payment form
 
 def allowed_file(filename):
-    """Check if the file has an allowed extension.""" 
+    """Check if the file has an allowed extension."""
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/submit_payment', methods=['POST'])
@@ -246,9 +246,9 @@ def submit_payment():
     try:
         with engine.connect() as conn:
             trans = conn.begin()
-            query = text(""" 
+            query = text("""
                 INSERT INTO payments (name, email, payment_method, receipt_path)
-                VALUES (:name, :email, :payment_method, :receipt_path) 
+                VALUES (:name, :email, :payment_method, :receipt_path)
             """)
             conn.execute(query, {
                 "name": name,
@@ -270,22 +270,22 @@ def admin():
         with engine.connect() as conn:
             # Fetch registrations with 'id' included in the query
             registration_query = text("""
-                SELECT id, full_name, dob, email, phone, contact_method, course_category, course, referral, 
-                       experience, experience_details, payment_method, agree, created_at 
+                SELECT id, full_name, dob, email, phone, contact_method, course_category, course, referral,
+                       experience, experience_details, payment_method, agree, created_at
                 FROM registrations
             """)
             registrations = conn.execute(registration_query).fetchall()
 
             # Fetch payments
             payment_query = text("""
-                SELECT id, name, email, payment_method, receipt_path, created_at 
+                SELECT id, name, email, payment_method, receipt_path, created_at
                 FROM payments
             """)
             payments = conn.execute(payment_query).fetchall()
 
         # Pass the results to the template for rendering
         return render_template('view_admin.html', registrations=registrations, payments=payments)
-    
+
     except Exception as e:
         flash(f"An error occurred while fetching admin data: {str(e)}", 'error')
         # Log the error to the console for debugging purposes
@@ -311,18 +311,17 @@ def delete_entry(entry_type, entry_id):
             else:
                 flash("Invalid entry type", "error")
                 return redirect(url_for('admin'))  # Make sure 'admin' view is correct
-                
+
             result = conn.execute(query, {"id": entry_id})
             if result.rowcount > 0:
                 flash(f"{entry_type.capitalize()} entry deleted successfully!", "success")
             else:
                 flash(f"No {entry_type} entry found with the given ID.", "error")
-                
+
     except Exception as e:
         flash(f"An error occurred: {str(e)}", "error")
-    
+
     return redirect(url_for('admin'))
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
