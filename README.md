@@ -1,2 +1,2 @@
-# art-root-academy
-This website is specifically created for a client on her requirements, based on an  ART ACADEMY named as "ART ROOT ACADEMY"."
+# art-&-tect-academy
+This website is designed for a client based on her specifications for an art academy called "ART & TECH ACADEMY."
